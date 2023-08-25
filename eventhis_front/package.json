@@ -12,7 +12,6 @@
         "@hookform/resolvers": "^2.7.1",
         "bcryptjs": "^2.4.3",
         "express-jwt": "^6.1.0",
-        "jsonwebtoken": "^8.5.1",
         "next": "^11.1.0",
         "prop-types": "^15.7.2",
         "react": "^17.0.2",
@@ -23,6 +22,14 @@
     },
     "devDependencies": {
         "eslint": "7.32.0",
-        "eslint-config-next": "11.1.0"
+        "eslint-config-next": "11.1.0",
+        "jsonwebtoken": "^9.0.1",
+        "loader-utils": "^3.2.1",
+        "shell-quote": "^1.8.1"
+    },
+    "overrides": {
+        "jsonwebtoken": "$jsonwebtoken",
+        "shell-quote": "$shell-quote",
+        "loader-utils": "$loader-utils"
     }
 }
