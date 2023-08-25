@@ -23,7 +23,7 @@ O Projeto Front-end é uma aplicação desenvolvida em TypeScript e React que co
 
 2. Navegue até o diretório:
     ```
-    cd binaryhorizon_eventhis_front
+    cd binaryhorizon_eventhis_front/eventhis_front
     ```
 
 3. Instale as dependências usando o npm (ou yarn):

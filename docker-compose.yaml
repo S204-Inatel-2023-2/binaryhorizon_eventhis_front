@@ -1,0 +1,67 @@
+version: '3.8'
+services:
+  # PARA SUBIR BACKEND + BANCO DE DADOS "DESCOMENTAR" OS SERVIÇOS DB E API
+  # GARANTIR QUE OS DOIS REPOSITÓRIOS ESTEJAM CLONADOS NA MESMA PASTA
+  # root:
+  #  - ./binaryhorizon_eventhis_bff
+  #  - ./binaryhorizon_eventhis_front
+  # abrir o diretorio front
+  # cd ./binaryhorizon_eventhis_front
+  # docker-compose up --build
+  
+  # SERVIÇO BANCO DE DADOS
+  
+  # db:
+  #   image: postgres:14.1-alpine
+  #   restart: always
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #   ports:
+  #     - '5432:5432'
+  #   volumes: 
+  #     - ./postgres-data:/var/lib/postgresql/data
+  #     - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  
+  # SERVIÇO API-BFF
+  
+  # api:
+  #     container_name: eventhis-api
+  #     build:
+  #       context: ./../binaryhorizon_eventhis_bff
+  #     image: eventhis-bff
+  #     depends_on:
+  #       - db
+  #     links:
+  #       - db
+  #     ports:
+  #       - 5000:5000
+  #     environment:
+  #       NODE_ENV: production
+  #       DB_HOST: db
+  #       DB_PORT: 5432
+  #       DB_USER: postgres
+  #       DB_PASSWORD: postgres
+  #       DB_NAME: postgres
+  #     volumes:
+  #       - ./:/src
+
+  # SERVIÇO FRONT-END
+  front:
+      container_name: eventhis-front
+      build:
+        context: ./eventhis_front
+      image: eventhis-front
+      ports:
+        - 3000:3000
+      environment:
+        NODE_ENV: production
+        API_HOST: api
+        API_PORT: 5000
+      # links:
+      #   - api
+      volumes:
+        - ./:/src
+volumes:
+  postgres-data:
+    driver: local
