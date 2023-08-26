@@ -27,7 +27,7 @@ CREATE TABLE Event (
 );
 
 -- Inserção de dados de exemplo
-INSERT INTO appUser (name, email, password, phone, linkedin, picture, role)
+INSERT INTO appUser (name, email, password, phone, linkedin, picture, company, role)
 VALUES
     ('Rosi Joy Participant', 'rosi@example.com', 'senha123', '123456789', 'linkedin.com/rosi', 'BASE64_IMAGE', 'INATEL', 'participant'),
     ('John Johnson Creator', 'john@example.com', 'senha456', '987654321', 'linkedin.com/john', 'BASE64_IMAGE', 'INTELBRAS', 'creator'),
