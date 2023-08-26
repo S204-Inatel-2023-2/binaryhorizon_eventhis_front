@@ -5,7 +5,7 @@ services:
   # root:
   #  - ./binaryhorizon_eventhis_bff
   #  - ./binaryhorizon_eventhis_front
-  # docker-compose up --build
+  # docker-compose up --build (Este comando faz o build dos containers e sobe os serviços)
   
   # SERVIÇO BANCO DE DADOS
   
@@ -65,6 +65,20 @@ services:
       - ./:/src
     networks:
       - mynetwork
+
+  # SCRIPT RESPONSÁVEL EM INICIALIZAR A API COM OS DADOS DO SCRIPT INITALIZE_API
+  script:
+    image: bash
+    depends_on:
+      - api
+    links:
+      - api
+    volumes:
+      - ./initialize_api.sh:/initialize_api.sh
+    networks:
+      - mynetwork
+    command: sh -c "./initialize_api.sh"
+
 volumes:
   postgres-data:
 
