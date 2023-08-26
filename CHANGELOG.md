@@ -4,7 +4,7 @@
     - Cadastro e login de usuários
     - Armazenamento de dados localmente, via json    
 ---
-- [v 1.0.1](#)
+- [v 1.0.1](https://github.com/S204-Inatel-2023-2/binaryhorizon_eventhis_front/commit/8c901a0adf4c61acae934f75761836ef9d5bb36a)
     - Atualização de versões das dependências
     - Instalação do Bootstrap
 ---

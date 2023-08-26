@@ -29,9 +29,9 @@ CREATE TABLE Event (
 -- Inserção de dados de exemplo
 INSERT INTO appUser (name, email, password, phone, linkedin, picture, role)
 VALUES
-    ('Rosi Joy Participant', 'rosi@example.com', 'senha123', '123456789', 'linkedin.com/rosi', 'BASE64_IMAGE', 'participant'),
-    ('John Johnson Creator', 'john@example.com', 'senha456', '987654321', 'linkedin.com/john', 'BASE64_IMAGE', 'creator'),
-    ('Carlos Administrator', 'carl@example.com', 'senha789', '456789123', 'linkedin.com/carl', 'BASE64_IMAGE', 'administrator');
+    ('Rosi Joy Participant', 'rosi@example.com', 'senha123', '123456789', 'linkedin.com/rosi', 'BASE64_IMAGE', 'INATEL', 'participant'),
+    ('John Johnson Creator', 'john@example.com', 'senha456', '987654321', 'linkedin.com/john', 'BASE64_IMAGE', 'INTELBRAS', 'creator'),
+    ('Carlos Administrator', 'carl@example.com', 'senha789', '456789123', 'linkedin.com/carl', 'BASE64_IMAGE', 'BINARY HORIZON', 'administrator');
 
 INSERT INTO Event (title, description, picture, creatorId)
 VALUES
