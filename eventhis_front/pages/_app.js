@@ -2,7 +2,8 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import React from 'react';
-import 'styles/globals.css';
+import 'bootstrap/dist/css/bootstrap.css'   // add bootstrap css 
+import 'styles/globals.css';                // custom css
 import { userService } from 'services';
 import { Nav, Alert } from 'components';
 

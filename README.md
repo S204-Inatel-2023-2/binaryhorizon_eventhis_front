@@ -1,42 +1,61 @@
-# Projeto Front-end com TypeScript e React
+# Projeto Front-end com Next.js
 
-O Projeto Front-end é uma aplicação desenvolvida em TypeScript e React que consome as APIs do Projeto BFF. Ele oferece uma interface de usuário interativa para acessar os recursos das APIs API_BASE e API_IA, proporcionando uma experiência fluida para os usuários.
+O Projeto Front-end é uma aplicação desenvolvida em Next.js que consome as APIs do Projeto BFF. Ele oferece uma interface de usuário interativa para acessar os recursos das APIs API_BASE e API_IA, proporcionando uma experiência fluida para os usuários.
 
 ## Funcionalidades
 
-- **Visualização de Dados da API_BASE:** A aplicação permite aos usuários visualizar [descreva os tipos de dados da API_BASE que podem ser acessados].
+- **Visualização de Dados da API_BASE:** A aplicação permite aos usuários visualizar e se inscrever em eventos.
 
-- **Inteligência Artificial da API_IA:** Através do Projeto BFF, a aplicação oferece funcionalidades relacionadas a [explique os recursos de inteligência artificial da API_IA que a aplicação consome].
+- **Inteligência Artificial da API_IA:** Através do Projeto BFF, a aplicação oferece funcionalidades relacionadas a reconhecimento facial, utilizados para identificar os usuários .
 
 ## Pré-requisitos
 
-- [Node.js](https://nodejs.org/): Certifique-se de ter o Node.js instalado. Recomendamos a versão 16 ou superior.
 - [Git](https://git-scm.com/): Para clonar o repositório do projeto.
+
+- NVM (Node Version Manager):
+    Instale o curl
+    ```bash
+    sudo apt install curl
+    ```
+    Instale o NVM
+    ```bash
+    curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+    ```
+    Atualize as confiugrações do NVM
+    ```bash
+    source ~/.bashrc
+    ```
 
 ## Instalação e Execução
 
 1. Clone este repositório em sua máquina local:
 
    ```bash
-   git clone https://github.com/seu-usuario/projeto-front-end.git
+   git clone git@github.com:S204-Inatel-2023-2/binaryhorizon_eventhis_front.git
    ```
 
 2. Navegue até o diretório:
-    ```
+    ```bash
     cd binaryhorizon_eventhis_front/eventhis_front
     ```
 
-3. Instale as dependências usando o npm (ou yarn):
+3. Instale a versão 16 do Node.js usando o NVM:
+    ```bash
+    nvm install 16
+    nvm use 16
     ```
+
+4. Instale as dependências usando o npm (ou yarn):
+    ```bash
     npm install
     ```
-4. Configure as URLs das APIs no arquivo .env ou diretamente nos arquivos de configuração.
+5. Configure as URLs das APIs no arquivo .env ou diretamente nos arquivos de configuração.
 
-5. Inicie o servidor de desenvolvimento:
-    ```
+6. Inicie o servidor de desenvolvimento:
+    ```bash
     npm run dev
     ```
-6. Abra o navegador e navegue para a URL do servidor de desenvolvimento.
+7. Abra o navegador e navegue para a URL do servidor de desenvolvimento.
     ```
     http://localhost:3000
     ```

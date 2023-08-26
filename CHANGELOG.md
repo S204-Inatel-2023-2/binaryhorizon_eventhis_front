@@ -1,0 +1,10 @@
+- [v 1.0.0](https://github.com/S204-Inatel-2023-2/binaryhorizon_eventhis_front/commit/756e27b1e22992ef7da15ef4f16e279134605fed)
+    - Criação da estrutura base do projeto Next.js
+    - Criação do Dockerfile e docker-compose
+    - Cadastro e login de usuários
+    - Armazenamento de dados localmente, via json    
+---
+- [v 1.0.1](#)
+    - Atualização de versões das dependências
+    - Instalação do Bootstrap
+---
