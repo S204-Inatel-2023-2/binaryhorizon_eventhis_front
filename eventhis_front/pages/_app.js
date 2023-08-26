@@ -53,18 +53,13 @@ function App({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <title>Eventhis Login Page</title>
+                <title>Eventhis</title>
                 
                 {/* eslint-disable-next-line @next/next/no-css-tags */}
                 <link href="//netdna.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
             </Head>
-            <div className="main-logo-container">
-                
-            <img src="https://iili.io/HpDnzn2.md.png" alt='Grafana' height={150} width={150}/>
-          
-            </div>
-            <div className={`app-container ${user ? 'bg-light' : ''}`}>
-                <Nav />
+            <Nav />
+            <div className={` ${user ? 'bg-light' : ''}`}>
                 <Alert />
                 {authorized &&
                     <Component {...pageProps} />
