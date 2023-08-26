@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  # SERVIÇO FRONT-END
+  # cd ./eventhis_front
+  # docker-compose up
+  front:
+    container_name: eventhis-front-standalone
+    build:
+      context: ./
+    image: eventhis-front
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: production
+      API_HOST: api:8000
+      API_PORT: 8000
+    volumes:
+      - ./:/src
+
