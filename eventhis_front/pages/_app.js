@@ -15,6 +15,8 @@ function App({ Component, pageProps }) {
     const [authorized, setAuthorized] = useState(false);
 
     useEffect(() => {
+        require("bootstrap/dist/js/bootstrap.bundle.min.js");
+        
         // on initial load - run auth check 
         authCheck(router.asPath);
 
@@ -37,16 +39,19 @@ function App({ Component, pageProps }) {
     function authCheck(url) {
         // redirect to login page if accessing a private page and not logged in 
         setUser(userService.userValue);
-        const publicPaths = ['/account/login', '/account/register'];
+        const publicPaths = ['/account/login', '/account/register', '/events'];
         const path = url.split('?')[0];
-        if (!userService.userValue && !publicPaths.includes(path)) {
+
+        if (userService.userValue || publicPaths.includes(path)){
+            setAuthorized(true);
+        }
+        else {
+            console.log(path);
             setAuthorized(false);
             router.push({
                 pathname: '/account/login',
                 query: { returnUrl: router.asPath }
             });
-        } else {
-            setAuthorized(true);
         }
     }
 

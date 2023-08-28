@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-
-import { NavLink } from '.';
 import { userService } from 'services';
 
 export { Nav };
@@ -16,9 +14,6 @@ function Nav() {
     function logout() {
         userService.logout();
     }
-
-    // only show nav when logged in
-    if (!user) return null;
     
     return (
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
