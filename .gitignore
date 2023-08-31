@@ -1,6 +1,7 @@
 # Arquivos gerados pelo build
 build/
 dist/
+/postgres-data
 
 # Dependências instaladas
 node_modules/
