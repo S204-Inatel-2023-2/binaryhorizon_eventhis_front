@@ -38,7 +38,7 @@ O Projeto Front-end é uma aplicação desenvolvida em Next.js que consome as AP
     ```bash
     cd binaryhorizon_eventhis_front/eventhis_front
     ```
-s
+
 3. Instale a versão 18 do Node.js usando o NVM:
     ```bash
     nvm install 18
