@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+ 
+  # SERVIÇO FRONT-END
+  front:
+    container_name: eventhis-front
+    build:
+      context: ./
+    image: eventhis-front
+    ports:
+      - 8100:80
+    environment:
+      NODE_ENV: production
+      API_HOST: http://localhost:8000
