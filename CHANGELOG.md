@@ -8,3 +8,6 @@
     - Atualização de versões das dependências
     - Instalação do Bootstrap
 ---
+- [v 2.0.0](#)
+    - Alteração do framework para Ionic, visando cross platform app
+---
