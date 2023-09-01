@@ -7,6 +7,16 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
+  friends = [
+    {
+      name: 'Airton',
+      age: 21
+    },{
+      name: 'Pedrinho',
+      age: 18
+    }
+  ]
+
   constructor() {}
 
 }
