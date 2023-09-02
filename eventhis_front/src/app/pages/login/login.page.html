@@ -14,12 +14,12 @@
       <ion-card-content>
         <ion-item>
           <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" [(ngModel)]="email"></ion-input>
+          <ion-input autocomplete="off" type="email" [(ngModel)]="postData.email"></ion-input>
         </ion-item>
   
         <ion-item>
           <ion-label position="floating" color="dark">Senha</ion-label>
-          <ion-input type="password" [(ngModel)]="password" ></ion-input>
+          <ion-input autocomplete="off" type="password" [(ngModel)]="postData.password" ></ion-input>
         </ion-item>
   
         <ion-button expand="full" (click)="login()">Entrar</ion-button>
