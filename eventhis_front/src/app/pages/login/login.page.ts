@@ -38,8 +38,8 @@ export class LoginPage implements OnInit {
   
   login() {
     if (this.validateInputs()) {
-      this.authService.login(this.postData).subscribe(
-        (res: any) => {
+      this.authService.login(this.postData).subscribe({
+        next: (res: any) => {
           if (res.userData) {
             // Storing the User data.
             this.storageService.store(AuthConstants.AUTH, res.userData);
@@ -48,10 +48,10 @@ export class LoginPage implements OnInit {
             this.toastService.presentToast('Incorrect username and password.');
           }
         },
-        (error: any) => {
+        error: (error: any) => {
           this.toastService.presentToast('Network Issue.');
         }
-      );
+      });
     } else {
       this.toastService.presentToast('Incorrect username and password.');
     }
