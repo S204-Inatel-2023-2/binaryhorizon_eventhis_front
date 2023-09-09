@@ -37,23 +37,39 @@ export class LoginPage implements OnInit {
   }
   
   login() {
+    // This function, called login, is likely used to handle the authentication process.
+  
+    // First, it checks if user inputs are valid using the validateInputs() function.
     if (this.validateInputs()) {
+  
+      // If user inputs are valid, it calls the authentication service (authService) to perform the login.
       this.authService.login(this.postData).subscribe({
         next: (res: any) => {
-          if (res.userData) {
-            // Storing the User data.
+          // When the response is successfully received, this function is called.
+  
+          if (res['user']) {
+            // If the response includes user data, it means the login was successful.
+  
+            // Stores the user data somewhere, probably in a local storage system (localStorage or similar).
             this.storageService.store(AuthConstants.AUTH, res.userData);
+  
+            // Then, redirects the user to the main page (route '/') of your application.
             this.router.navigate(['/']);
           } else {
+            // If the response doesn't include user data, it indicates an authentication error.
+            // Therefore, it displays an error message to the user.
             this.toastService.presentToast('Incorrect username and password.');
           }
         },
         error: (error: any) => {
+          // If an error occurs during the authentication call, this error function is called.
+          // It displays a network error message to the user.
           this.toastService.presentToast('Network Issue.');
         }
       });
     } else {
+      // If user inputs are not valid, it displays an error message to the user.
       this.toastService.presentToast('Incorrect username and password.');
     }
-  }
+  }  
 }
