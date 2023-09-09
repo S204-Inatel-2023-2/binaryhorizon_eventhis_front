@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
           if (res['user']) {
             // If the response includes user data, it means the login was successful.
   
-            // Stores the user data somewhere, probably in a local storage system (localStorage or similar).
+            // Stores the user data in a local storage system.
             this.storageService.store(AuthConstants.AUTH, res.userData);
   
             // Then, redirects the user to the main page (route '/') of your application.

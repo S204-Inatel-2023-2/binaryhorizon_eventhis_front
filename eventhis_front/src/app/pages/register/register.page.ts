@@ -51,13 +51,14 @@ export class RegisterPage implements OnInit {
     if (this.validateInputs()) {
       this.authService.signup(this.postData).subscribe({
         next: (res: any) => {
-          if (res.userData) {
-            // Storing the User data.
-            this.storageService
-            .store(AuthConstants.AUTH, res.userData)
-            .then(res => {
-              this.router.navigate(['/']);
-            });
+          if (res['user']) {
+            // If the response includes user data, it means the login was successful.
+  
+            // Stores the user data in a local storage system.
+            this.storageService.store(AuthConstants.AUTH, res.userData);
+  
+            // Then, redirects the user to the main page (route '/') of your application.
+            this.router.navigate(['/']);
           } else {
             this.toastService.presentToast(
               'Data alreay exists, please enter new details.'
