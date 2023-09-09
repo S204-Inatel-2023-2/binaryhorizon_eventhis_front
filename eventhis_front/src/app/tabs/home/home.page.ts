@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss']
 })
-export class Tab1Page {
+export class HomePage {
   eventos = [
     {
-      titulo: 'Rave do Airton',
+      titulo: 'Festival',
       data: new Date(),
       imagem: 'https://i.pinimg.com/564x/31/e6/1d/31e61d2e45e57a8cdf15186c25654327.jpg'
     },
@@ -22,7 +22,7 @@ export class Tab1Page {
 
   eventosNear = [
     {
-      titulo: 'Pedrinho apresenta, como dar!',
+      titulo: 'Festa Inatel!',
       data: new Date(),
       imagem: 'https://i.pinimg.com/564x/31/e6/1d/31e61d2e45e57a8cdf15186c25654327.jpg'
     },
