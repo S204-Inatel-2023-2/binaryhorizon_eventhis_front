@@ -47,7 +47,7 @@ export class RegisterPage implements OnInit {
       password.length > 0
     );
   }
-  signAction() {
+  register() {
     if (this.validateInputs()) {
       this.authService.signup(this.postData).subscribe({
         next: (res: any) => {
@@ -56,7 +56,7 @@ export class RegisterPage implements OnInit {
             this.storageService
             .store(AuthConstants.AUTH, res.userData)
             .then(res => {
-              this.router.navigate(['home/feed']);
+              this.router.navigate(['/']);
             });
           } else {
             this.toastService.presentToast(
