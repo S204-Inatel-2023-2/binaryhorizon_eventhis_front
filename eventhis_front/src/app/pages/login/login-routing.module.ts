@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginPage } from './login.page';
+import { AuthPageGuard } from 'src/app/guards/authPage';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPage
+    component: LoginPage,
+    canActivate: [AuthPageGuard]
   }
 ];
 

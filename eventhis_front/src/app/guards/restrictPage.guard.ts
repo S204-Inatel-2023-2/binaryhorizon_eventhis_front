@@ -6,7 +6,7 @@ import { StorageService } from '../services/storage.service';
 @Injectable({
 providedIn: 'root'
 })
-export class HomeGuard {
+export class RestrictPageGuard {
 constructor(public storageService: StorageService, public router: Router) {}
   canActivate(): Promise<boolean> {
     return new Promise(resolve => {
