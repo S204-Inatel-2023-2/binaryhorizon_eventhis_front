@@ -1,5 +1,4 @@
-
-<ion-header [translucent]="true" class="ion-padding">
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       <ion-grid>
@@ -8,16 +7,17 @@
             <img src="assets/eventhis_logo_horizontal_white.svg" alt="" class="">
           </ion-col>
           <ion-col size="6">
-            <ion-searchbar></ion-searchbar>
+            <ion-searchbar placeholder=""></ion-searchbar>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-padding">
   <div class="list-title">
-    <h1>Your Interests</h1>
+    <h1>Pode te interessar</h1>
   </div>
   
   <ion-list>
@@ -31,7 +31,7 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  <h1>Near you</h1>
+  <h1>Eventos perto de você</h1>
   <ion-list>
     <ion-item *ngFor="let evento of eventosNear">
       <ion-thumbnail slot="start">
