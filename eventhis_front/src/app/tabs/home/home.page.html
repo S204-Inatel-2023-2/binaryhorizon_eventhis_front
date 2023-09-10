@@ -16,6 +16,15 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
+    <ion-refresher-content
+      pullingIcon="arrow-down"
+      pullingText="Arraste para atualizar..."
+      refreshingSpinner="crescent"
+      refreshingText="Atualizando..."
+    ></ion-refresher-content>
+  </ion-refresher>
+
   <div class="list-title">
     <h1>Pode te interessar</h1>
   </div>

@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
+  doRefresh(event: any) {
+    setTimeout(() => {
+      event.detail.complete();
+    }, 2000);
+  }
+  
   eventos = [
     {
       titulo: 'Festival',
