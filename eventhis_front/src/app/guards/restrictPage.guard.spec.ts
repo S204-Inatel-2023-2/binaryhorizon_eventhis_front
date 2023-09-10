@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { IndexGuard } from './index.guard';
+import { RestrictPageGuard } from './restrictPage.guard';
 
-describe('IndexGuard', () => {
-  let guard: IndexGuard;
+describe('RestrictPageGuard', () => {
+  let guard: RestrictPageGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(IndexGuard);
+    guard = TestBed.inject(RestrictPageGuard);
   });
 
   it('should be created', () => {

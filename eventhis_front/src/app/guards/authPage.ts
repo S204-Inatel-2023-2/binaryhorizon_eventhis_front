@@ -6,22 +6,22 @@ import { StorageService } from '../services/storage.service';
 @Injectable({
 providedIn: 'root'
 })
-export class IndexGuard {
-  constructor(public storageService: StorageService, public router: Router) {}
+export class AuthPageGuard {
+constructor(public storageService: StorageService, public router: Router) {}
   canActivate(): Promise<boolean> {
     return new Promise(resolve => {
       this.storageService
       .get(AuthConstants.AUTH)
       .then(res => {
-        if (res) {
-          this.router.navigate(['/']);
-          resolve(false);
-        } else {
+        if (!res) {
           resolve(true);
+        } else {
+          this.router.navigate(['/profile']);
+          resolve(false);
         }
       })
       .catch(err => {
-        resolve(true);
+        resolve(false);
       });
     });
   }

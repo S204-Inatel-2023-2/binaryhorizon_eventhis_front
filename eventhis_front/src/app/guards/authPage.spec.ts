@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HomeGuard } from './home.guard';
+import { AuthPageGuard } from './authPage';
 
-describe('HomeGuard', () => {
-  let guard: HomeGuard;
+describe('AuthPageGuard', () => {
+  let guard: AuthPageGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(HomeGuard);
+    guard = TestBed.inject(AuthPageGuard);
   });
 
   it('should be created', () => {
