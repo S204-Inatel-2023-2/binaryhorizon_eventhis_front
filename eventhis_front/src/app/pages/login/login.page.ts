@@ -64,7 +64,7 @@ export class LoginPage implements OnInit {
         error: (error: any) => {
           // If an error occurs during the authentication call, this error function is called.
           // It displays a network error message to the user.
-          this.toastService.presentToast('Network Issue.');
+          this.toastService.presentToast("Incorrect username and password.");
         }
       });
     } else {

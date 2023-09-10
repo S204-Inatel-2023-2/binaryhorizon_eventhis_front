@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('./community/community.module').then(m => m.CommunityPageModule)
       },
       {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
+      },
+      {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
