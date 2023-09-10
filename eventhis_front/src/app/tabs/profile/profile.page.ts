@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute  } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -8,22 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['profile.page.scss']
 })
 export class ProfilePage {
-
-  user =  {
-    name: 'Pitaya',
-    email: 'pitaya@email.com',
-    company: 'Pitaya Inc',
-    linkedin: 'Pitaya',
-    phone: '35987654321',
-    photo: 'https://placehold.co/400x400'
-  }
+  user: any
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    try {
+      const userData = await this.route.snapshot.data['userData']['contact'];
+      if (userData) {
+        this.user = userData;
+      } else {
+        this.router.navigate(['/login']);
+      }
+    } catch (error) {
+      console.error('Erro ao obter dados do usuário:', error);
+    }
   }
   
   logout() {
