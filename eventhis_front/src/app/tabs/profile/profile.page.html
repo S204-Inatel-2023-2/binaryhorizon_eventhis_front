@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-sm="12" size-md="6" size-lg="4">
+
+          <ion-card>
+            <ion-card-content class="profile-card">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4">
+                    <ion-img [src]="user.photo" alt="Foto do usuário" class="profile-photo"></ion-img>
+                  </ion-col>
+                  <ion-col size="8" class="profile-info">
+                    <h1>{{ user.name }}</h1>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+
+            <ion-card-content>
+              <p><strong>Email:</strong> {{ user.email }}</p>
+              <p><strong>Empresa:</strong> {{ user.company }}</p>
+              <p><strong>LinkedIn:</strong> {{ user.linkedin }}</p>
+              <p><strong>Telefone:</strong> {{ user.phone }}</p>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-button expand="full" (click)="logout()">Logout</ion-button>
+      
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
