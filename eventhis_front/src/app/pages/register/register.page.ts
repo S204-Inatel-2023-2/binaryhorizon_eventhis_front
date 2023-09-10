@@ -55,7 +55,7 @@ export class RegisterPage implements OnInit {
             // If the response includes user data, it means the login was successful.
   
             // Stores the user data in a local storage system.
-            this.storageService.store(AuthConstants.AUTH, res.userData);
+            this.storageService.store(AuthConstants.AUTH, res['user']);
   
             // Then, redirects the user to the main page (route '/') of your application.
             this.router.navigate(['/']);

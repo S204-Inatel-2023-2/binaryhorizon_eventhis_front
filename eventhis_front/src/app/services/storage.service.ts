@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugins } from '@capacitor/core';
-const { Storage } = Plugins;
+import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +9,8 @@ export class StorageService {
 
   // Store the value
   async store(storageKey: string, value: any) {
-    const encryptedValue = btoa(escape(JSON.stringify(value)));
-    await Storage['set']({
+    const encryptedValue = btoa(encodeURIComponent(JSON.stringify(value)));
+    await Preferences.set({
     key: storageKey,
     value: encryptedValue
     });
@@ -19,16 +18,20 @@ export class StorageService {
   
   // Get the value
   async get(storageKey: string) {
-    const ret = await Storage['get']({ key: storageKey });
-    return JSON.parse(unescape(atob(ret.value)));
-  }
+    const ret = await Preferences.get({ key: storageKey });
+    if (ret && ret.value) {
+      return JSON.parse(decodeURIComponent(atob(ret.value)));
+    } else {
+      return null;
+    }
+  }  
   
   async removeStorageItem(storageKey: string) {
-    await Storage['remove']({ key: storageKey });
+    await Preferences.remove({ key: storageKey });
   }
   
   // Clear storage
   async clear() {
-    await Storage['clear']();
+    await Preferences.clear();
   }
 }
