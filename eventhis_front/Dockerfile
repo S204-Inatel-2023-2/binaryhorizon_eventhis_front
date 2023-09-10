@@ -1,23 +1,30 @@
 # Define a imagem base
-FROM node:16-alpine
+FROM node:16-alpine as builder
 
 # Define o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia o package.json e o package-lock.json para o diretório de trabalho
+# Copia o arquivo package.json e o package-lock.json (ou yarn.lock) para o diretório de trabalho
 COPY package*.json ./
 
 # Instala as dependências do projeto
-RUN npm ci
+RUN npm install -g ionic
+RUN npm install
 
-# Copia todo o código fonte para o diretório de trabalho
+# Copia o código-fonte para o diretório de trabalho
 COPY . .
 
-# Compila o aplicativo Next.js para produção
-RUN npm run build
+# Compila a aplicação
+RUN ionic build --prod --engine=browser
 
-# Expõe a porta em que o aplicativo Next.js está escutando (geralmente 3000)
-EXPOSE 3000
+# Define a imagem base para o ambiente de produção
+FROM nginx:alpine
 
-# Define o comando para iniciar o aplicativo Next.js
-CMD ["npm", "start"]
+# Copia os arquivos compilados do diretório do builder para o diretório padrão do Nginx
+COPY --from=builder /app/www /usr/share/nginx/html
+
+# Expõe a porta 80 para acesso externo
+EXPOSE 80
+
+# Inicia o servidor Nginx
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,40 @@
+
+<ion-header [translucent]="true" class="ion-padding">
+  <ion-toolbar>
+    <ion-title>
+      <img src="assets/eventhis_logo_horizontal_white.svg" alt="" class="">
+    </ion-title>
+  </ion-toolbar>
+  <ion-searchbar></ion-searchbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="list-title">
+    <h1>Your Interests</h1>
+  </div>
+  
+  <ion-list>
+    <ion-item *ngFor="let evento of eventos">
+      <ion-thumbnail slot="start">
+        <img [src]="evento.imagem">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ evento.titulo }}</h2>
+        <p>{{ evento.data | date:'mediumDate' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <h1>Near you</h1>
+  <ion-list>
+    <ion-item *ngFor="let evento of eventosNear">
+      <ion-thumbnail slot="start">
+        <img [src]="evento.imagem">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ evento.titulo }}</h2>
+        <p>{{ evento.data | date:'mediumDate' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

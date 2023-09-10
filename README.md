@@ -39,23 +39,28 @@ O Projeto Front-end é uma aplicação desenvolvida em Next.js que consome as AP
     cd binaryhorizon_eventhis_front/eventhis_front
     ```
 
-3. Instale a versão 16 do Node.js usando o NVM:
+3. Instale a versão 18 do Node.js usando o NVM:
     ```bash
-    nvm install 16
-    nvm use 16
+    nvm install 18
+    nvm use 18
     ```
 
-4. Instale as dependências usando o npm (ou yarn):
+4. Se você não tem o Ionic CLI instalado, rode o comando a seguir:
+    ```bash
+    npm install -g @ionic/cli
+    ```
+    
+5. Instale as dependências usando o npm:
     ```bash
     npm install
     ```
-5. Configure as URLs das APIs no arquivo .env ou diretamente nos arquivos de configuração.
 
 6. Inicie o servidor de desenvolvimento:
     ```bash
-    npm run dev
+    ionic serve
     ```
+
 7. Abra o navegador e navegue para a URL do servidor de desenvolvimento.
     ```
-    http://localhost:3000
+    http://localhost:8100
     ```

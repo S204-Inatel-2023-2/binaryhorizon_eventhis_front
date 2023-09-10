@@ -1,0 +1,7 @@
+{
+  "name": "eventhis_front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
