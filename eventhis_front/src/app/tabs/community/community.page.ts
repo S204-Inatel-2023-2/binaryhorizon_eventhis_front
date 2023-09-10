@@ -6,14 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['community.page.scss']
 })
 export class CommunityPage {
+  doRefresh(event: any) {
+    setTimeout(() => {
+      event.detail.complete();
+    }, 2000);
+  }
 
   friends = [
     {
-      name: 'Airton',
-      age: 21
+      name: 'Matheus Souza'
     },{
-      name: 'Pedrinho',
-      age: 18
+      name: 'Pedro Ribeiro'
+    },{
+      name: 'João Pedro'
+    },{
+      name: "Jorge Mendes"
+    },{
+      name: "Gabriel Oliveira"
+    },{
+      name: "Thiago Santos"
     }
   ]
 
