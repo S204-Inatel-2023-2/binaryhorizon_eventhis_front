@@ -10,25 +10,24 @@
           <ion-card-header color="light" class="margin-bottom-1 padding-y-1-5">
             <ion-card-title>Entre em sua conta</ion-card-title>
           </ion-card-header>
-          
-      
-          <ion-card-content class="margin-bottom-1 ">
-            <ion-item>
-              <ion-label position="floating">E-mail</ion-label>
-              <ion-input label="" autocomplete="off" type="email" [(ngModel)]="postData.email"></ion-input>
-            </ion-item>
-          </ion-card-content>
 
           <ion-card-content class="margin-bottom-1">
-            <ion-item>
-              <ion-label position="floating" color="dark">Senha</ion-label>
-              <ion-input label="" autocomplete="off" type="password" [(ngModel)]="postData.password" ></ion-input>
-            </ion-item>
+            <form (ngSubmit)="login()" ngNativeValidate>
+              <ion-item>
+                <ion-label position="floating">E-mail</ion-label>
+                <ion-input label="" autocomplete="off" type="email" [(ngModel)]="postData.email" name="email"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating" color="dark">Senha</ion-label>
+                <ion-input label="" autocomplete="off" type="password" [(ngModel)]="postData.password" name="password"></ion-input>
+              </ion-item>
+
+              <ion-button expand="full" type="submit">Entrar</ion-button>
+            </form>
           </ion-card-content>
 
           <ion-card-content>
-            <ion-button expand="full" (click)="login()">Entrar</ion-button>
-      
             <div class="register-link">
               <p>Não tem uma conta? <a routerLink="/register">Registrar</a></p>
             </div>
