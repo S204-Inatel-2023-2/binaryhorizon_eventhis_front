@@ -2,7 +2,7 @@
   <a routerLink="/"><img src="assets/eventhis_logo_horizontal_white.svg"></a>
 </ion-header>
 
-<ion-content >
+<ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size-sm="12" size-md="6" size-lg="4">
@@ -12,43 +12,44 @@
           </ion-card-header>
       
           <ion-card-content>
-      
-            <ion-item>
-              <ion-label position="floating" color="dark">Nome</ion-label>
-              <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.name" ></ion-input>
-            </ion-item>
+            <form (ngSubmit)="register()" ngNativeValidate>
+              <ion-item>
+                <ion-label position="floating" color="dark">Nome</ion-label>
+                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.name" name="name"></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">E-mail</ion-label>
-              <ion-input label="" autocomplete="off" type="email" [(ngModel)]="postData.email"></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating">E-mail</ion-label>
+                <ion-input label="" autocomplete="off" type="email" [(ngModel)]="postData.email" name="email"></ion-input>
+              </ion-item>
       
-            <ion-item>
-              <ion-label position="floating" color="dark">Senha</ion-label>
-              <ion-input label="" autocomplete="off" type="password" [(ngModel)]="postData.password" ></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating" color="dark">Senha</ion-label>
+                <ion-input label="" autocomplete="off" type="password" [(ngModel)]="postData.password" name="password"></ion-input>
+              </ion-item>
       
-            <ion-item>
-              <ion-label position="floating" color="dark">Empresa</ion-label>
-              <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.company" ></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating" color="dark">Empresa</ion-label>
+                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.company" name="company"></ion-input>
+              </ion-item>
       
-            <ion-item>
-              <ion-label position="floating" color="dark">Linkedin</ion-label>
-              <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.linkedin" ></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating" color="dark">Linkedin</ion-label>
+                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.linkedin" name="linkedin"></ion-input>
+              </ion-item>
       
-            <ion-item>
-              <ion-label position="floating" color="dark">Telefone</ion-label>
-              <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.phone" ></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating" color="dark">Telefone</ion-label>
+                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.phone" name="phone"></ion-input>
+              </ion-item>
       
-            <ion-item>
-              <ion-label position="floating" color="dark">Foto de perfil (insira um link) </ion-label>
-              <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.photo" ></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating" color="dark">Foto de perfil (insira um link)</ion-label>
+                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.photo" name="photo"></ion-input>
+              </ion-item>
       
-            <ion-button expand="full" (click)="register()">Registrar</ion-button>
+              <ion-button expand="full" type="submit">Registrar</ion-button>
+            </form>
       
             <div class="register-link">
               <p>Já tem uma conta? <a routerLink="/login">Entrar</a></p>
