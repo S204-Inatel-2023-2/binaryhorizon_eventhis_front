@@ -16,7 +16,7 @@ constructor(public storageService: StorageService, public router: Router) {}
         if (res) {
           resolve(true);
         } else {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/profile/login']);
           resolve(false);
         }
       })
