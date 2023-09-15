@@ -8,20 +8,20 @@ import { RegisterPage } from 'src/app/pages/register/register.page';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ProfilePage,
-    canActivate: [RestrictPageGuard],
-    resolve: {
-      userData: UserDataResolver
-    }
-  },
-  {
     path: 'login',
     component: LoginPage
   },
   {
     path: 'register',
     component: RegisterPage
+  },
+  {
+    path: '',
+    component: ProfilePage,
+    canActivate: [RestrictPageGuard],
+    resolve: {
+      userData: UserDataResolver
+    }
   }
 ];
 
