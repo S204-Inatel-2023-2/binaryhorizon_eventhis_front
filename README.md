@@ -1,6 +1,6 @@
-# Projeto Front-end com Next.js
+# Projeto Front-end com Ionic
 
-O Projeto Front-end é uma aplicação desenvolvida em Next.js que consome as APIs do Projeto BFF. Ele oferece uma interface de usuário interativa para acessar os recursos das APIs API_BASE e API_IA, proporcionando uma experiência fluida para os usuários.
+O Projeto Front-end é uma aplicação desenvolvida em Ionic que consome as APIs do Projeto BFF. Ele oferece uma interface de usuário interativa para acessar os recursos das APIs API_BASE e API_IA, proporcionando uma experiência fluida para os usuários.
 
 ## Funcionalidades
 
