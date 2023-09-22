@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8000/api/'
+  apiUrl: 'https://eventhis-bff-jml6hjddaq-uc.a.run.app/api/v2/'
 };
