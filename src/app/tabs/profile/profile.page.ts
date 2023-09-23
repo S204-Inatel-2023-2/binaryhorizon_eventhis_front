@@ -16,7 +16,9 @@ export class ProfilePage {
     private route: ActivatedRoute
   ) {}
 
-  async ngOnInit() {
+  async ngOnInit() {}
+
+  async ionViewWillEnter() {
     try {
       const userData = await this.route.snapshot.data['userData']['contact'];
       if (userData) {
