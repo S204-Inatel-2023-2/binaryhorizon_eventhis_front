@@ -3,17 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfilePage } from './profile.page';
 import { UserDataResolver } from '../../resolvers/user-data.resolver';
 import { RestrictPageGuard } from 'src/app/guards/restrictPage.guard';
-import { LoginPage } from '../../pages/login/login.page';
-import { RegisterPage } from 'src/app/pages/register/register.page';
 
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginPage
+    loadChildren: () => import('../../pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register',
-    component: RegisterPage
+    loadChildren: () => import('../../pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: '',
