@@ -10,9 +10,10 @@ O Projeto Front-end é uma aplicação desenvolvida em Ionic que consome as APIs
 
 ## Pré-requisitos
 
-- [Git](https://git-scm.com/): Para clonar o repositório do projeto.
+- ### [Git SCM](https://git-scm.com/)
+    ---
+- ### NVM (Node Version Manager):
 
-- NVM (Node Version Manager):
     Instale o curl
     ```bash
     sudo apt install curl
@@ -21,10 +22,12 @@ O Projeto Front-end é uma aplicação desenvolvida em Ionic que consome as APIs
     ```bash
     curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
     ```
-    Atualize as confiugrações do NVM
+    Atualize as configurações do NVM
     ```bash
     source ~/.bashrc
     ```
+    --- 
+    > Em vez disso, caso esteja rodando em uma máquina Windows, baixe o [nvm-setup.exe](https://github.com/coreybutler/nvm-windows/releases/download/1.1.11/nvm-setup.exe) e instale.
 
 ## Instalação e Execução
 
@@ -36,7 +39,7 @@ O Projeto Front-end é uma aplicação desenvolvida em Ionic que consome as APIs
 
 2. Navegue até o diretório:
     ```bash
-    cd binaryhorizon_eventhis_front/eventhis_front
+    cd binaryhorizon_eventhis_front
     ```
 
 3. Instale a versão 18 do Node.js usando o NVM:
@@ -47,7 +50,7 @@ O Projeto Front-end é uma aplicação desenvolvida em Ionic que consome as APIs
 
 4. Se você não tem o Ionic CLI instalado, rode o comando a seguir:
     ```bash
-    npm install -g @ionic/cli
+    npm install -g @ionic/cli@7.1.1
     ```
     
 5. Instale as dependências usando o npm:
