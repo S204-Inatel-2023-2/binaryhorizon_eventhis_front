@@ -4,6 +4,7 @@ import { AuthConstants } from 'src/app/config/auth-constants';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +22,32 @@ export class RegisterPage implements OnInit {
     phone: '',
     photo: ''
   };
+
+  imageSource:any;
+  imageStateMessage = "Foto não capturada";
+
+  takePicture = async () => {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Prompt
+      // resultType: CameraResultType.Base64,
+      // source: CameraSouce.Photos
+    });
+
+    this.imageSource = image.dataUrl;
+    this.postData.photo = this.imageSource;
+    // this.imageSource = 'data:image/jpeg;base64,' + image.base64String;
+
+    this.imageStateMessage = "Foto capturada";
+  };
+
+  discardPicture = async () => {
+    this.imageSource = '';
+    this.postData.photo = '';
+    this.imageStateMessage = "Foto não capturada";
+  }
 
   constructor(
     private authService: AuthService,
