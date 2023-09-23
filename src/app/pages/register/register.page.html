@@ -42,10 +42,13 @@
                 <ion-label position="floating" color="dark">Telefone</ion-label>
                 <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.phone" name="phone"></ion-input>
               </ion-item>
-      
+
               <ion-item>
-                <ion-label position="floating" color="dark">Foto de perfil (insira um link)</ion-label>
-                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.photo" name="photo"></ion-input>
+                <ion-label slot="end">{{imageStateMessage}}</ion-label>
+                <ion-button (click)="takePicture()"> 
+                  <ion-icon lazy="true" slot="start" name="image"></ion-icon> 
+                  Imagem
+                </ion-button>
               </ion-item>
       
               <ion-button expand="full" type="submit">Registrar</ion-button>
