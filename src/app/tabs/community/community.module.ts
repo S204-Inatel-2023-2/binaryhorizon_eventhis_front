@@ -7,13 +7,16 @@ import { ExploreContainerComponentModule } from '../../explore-container/explore
 
 import { CommunityPageRoutingModule } from './community-routing.module';
 
+import { SharedModule } from '../../shared/shared.module';
+
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    CommunityPageRoutingModule
+    CommunityPageRoutingModule,
+    SharedModule
   ],
   declarations: [CommunityPage]
 })

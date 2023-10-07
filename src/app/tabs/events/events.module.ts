@@ -7,14 +7,19 @@ import { ExploreContainerComponentModule } from '../../explore-container/explore
 
 import { EventsPageRoutingModule } from './events-routing.module';
 
+import { SharedModule } from '../../shared/shared.module';
+
 @NgModule({
+  declarations: [
+    EventsPage
+  ],
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    EventsPageRoutingModule
-  ],
-  declarations: [EventsPage]
+    EventsPageRoutingModule,
+    SharedModule
+  ]
 })
 export class EventsPageModule {}

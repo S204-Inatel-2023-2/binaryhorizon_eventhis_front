@@ -7,6 +7,11 @@
       <ng-container *ngIf="componentType === 'logo'">
         <a routerLink="/"><img src="assets/eventhis_logo_horizontal_white.svg"></a>
       </ng-container>
+      <ng-container *ngIf="componentType === 'just-text'">
+        <h1><b>
+          <ng-content></ng-content>
+        </b></h1>
+      </ng-container>
     </ion-title>
   </ion-toolbar>
 </ion-header>
