@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-event',
@@ -7,15 +9,45 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./event.page.scss'],
 })
 export class EventPage implements OnInit {
-  eventId!: number;
+  eventId!: string
+  event: any
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    protected authService: AuthService,
+    private toastService: ToastService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.eventId = params['id'];
-  
+      
+      this.authService.getEventData(this.eventId).subscribe({
+        next: (res: any) => {
+          if (res['event']) {
+            const eventData = res['event'];
+
+            if(eventData) {
+              this.event = eventData;
+
+              if(this.event.photo === "") {
+                this.event.photo = "https://placehold.co/600x400";
+              }
+            }
+            
+          } else {
+            this.toastService.presentToast('Could not find event.');
+
+            this.router.navigate(['/events']);
+          }
+        },
+        error: (error: any) => {
+          this.toastService.presentToast("Could not find event.");
+
+          this.router.navigate(['/events']);
+        }
+      });
     });
   }
-
 }

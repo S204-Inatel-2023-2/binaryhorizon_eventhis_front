@@ -1,3 +1,17 @@
-<app-header></app-header>
+<app-header componentType="just-text">Evento</app-header>
 
-<h1>Evento {{ eventId }}</h1>
+<ng-container *ngIf="event">
+    <ion-content>
+        <ion-card>
+            <img [src]="event.photo" alt="Foto do Evento">
+            <ion-card-header>
+            <ion-card-title>{{ event.name }}</ion-card-title>
+            <ion-card-subtitle>{{ event.date | date: 'dd/MM/yyyy' }}</ion-card-subtitle>
+            </ion-card-header>
+        
+            <ion-card-content>
+            <p>{{ event.description }}</p>
+            </ion-card-content>
+        </ion-card>
+    </ion-content>
+</ng-container>

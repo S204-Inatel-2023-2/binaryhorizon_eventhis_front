@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>
       <ng-container *ngIf="componentType === 'search-bar'">
-        <ion-searchbar class="search-bar" placeholder=""></ion-searchbar>
+        <ion-searchbar color="light" class="search-bar" animated="true" placeholder=""></ion-searchbar>
       </ng-container>
       <ng-container *ngIf="componentType === 'logo'">
         <a routerLink="/"><img src="assets/eventhis_logo_horizontal_white.svg"></a>

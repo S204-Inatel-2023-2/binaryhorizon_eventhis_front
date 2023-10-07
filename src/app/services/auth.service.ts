@@ -21,6 +21,10 @@ export class AuthService {
     return this.storageService.get(AuthConstants.AUTH);
   }
 
+  getEventData(getData: any): Observable<any> {
+    return this.httpService.get('events/', getData);
+  }
+
   login(postData: any): Observable<any> {
     return this.httpService.post('login', postData);
   }
