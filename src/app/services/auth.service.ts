@@ -25,6 +25,10 @@ export class AuthService {
     return this.httpService.get('events/', getData);
   }
 
+  getAllEvents(): Observable<any> {
+    return this.httpService.get('events/');
+  }
+
   login(postData: any): Observable<any> {
     return this.httpService.post('login', postData);
   }

@@ -18,12 +18,16 @@ export class HttpService {
       return this.http.post(url, JSON.stringify(data), options);
     }
 
-    get(serviceName: string, data: any) {
+    get(serviceName: string, data: any = null) {
       const headers = new HttpHeaders({
         'Content-Type': 'application/json'
       });
       const options = { headers: headers, withCredintials: false };
-      const url = environment.apiUrl + serviceName + data;
+
+      var url = environment.apiUrl + serviceName;;
+      if (data) {
+        url = url + data;
+      }
 
       return this.http.get(url, options);
     }
