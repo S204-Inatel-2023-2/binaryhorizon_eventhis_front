@@ -1,0 +1,12 @@
+<ion-header class="ion-text-center">
+  <ion-toolbar>
+    <ion-title>
+      <ng-container *ngIf="componentType === 'search-bar'">
+        <ion-searchbar class="search-bar" placeholder=""></ion-searchbar>
+      </ng-container>
+      <ng-container *ngIf="componentType === 'logo'">
+        <a routerLink="/"><img src="assets/eventhis_logo_horizontal_white.svg"></a>
+      </ng-container>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
