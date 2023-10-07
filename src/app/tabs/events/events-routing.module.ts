@@ -4,6 +4,10 @@ import { EventsPage } from './events.page';
 
 const routes: Routes = [
   {
+    path: 'event/:id',
+    loadChildren: () => import('../../pages/event/event.module').then( m => m.EventPageModule)
+  },
+  {
     path: '',
     component: EventsPage,
   }
@@ -14,3 +18,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class EventsPageRoutingModule {}
+
+
