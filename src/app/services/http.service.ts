@@ -8,14 +8,17 @@ import { environment } from '../../environments/environment';
 export class HttpService {
 
   constructor(private http: HttpClient) {}
-    post(serviceName: string, data: any) {
+    post(serviceName: string, data: any = null) {
       const headers = new HttpHeaders({
         'Content-Type': 'application/json'
       });
       const options = { headers: headers, withCredintials: false };
       const url = environment.apiUrl + serviceName;
 
-      return this.http.post(url, JSON.stringify(data), options);
+      if(data){
+        return this.http.post(url, JSON.stringify(data), options);
+      }
+      return this.http.post(url, options);
     }
 
     get(serviceName: string, data: any = null) {
@@ -24,11 +27,35 @@ export class HttpService {
       });
       const options = { headers: headers, withCredintials: false };
 
-      var url = environment.apiUrl + serviceName;;
+      var url = environment.apiUrl + serviceName;
+
       if (data) {
-        url = url + data;
+        url = url + "/" + data;
       }
 
       return this.http.get(url, options);
+    }
+
+    put(serviceName: string, data: any) {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+      const options = { headers: headers, withCredintials: false };
+      const url = environment.apiUrl + serviceName;
+
+      return this.http.put(url, JSON.stringify(data), options);
+    }
+
+    delete(serviceName: string, data: any) {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+      const options = { headers: headers, withCredintials: false };
+      var url = environment.apiUrl + serviceName;;
+      if (data) {
+        url = url + "/" + data;
+      }
+
+      return this.http.delete(url, options);
     }
 } 

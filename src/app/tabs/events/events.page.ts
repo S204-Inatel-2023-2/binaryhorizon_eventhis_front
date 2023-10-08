@@ -28,6 +28,10 @@ export class EventsPage {
     this.router.navigate(['/events/' + eventId]);
   }
 
+  goToCreateEvent() {
+    this.router.navigate(['/events/new']);
+  }
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       

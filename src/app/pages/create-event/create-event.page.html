@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-sm="12" size-md="6" size-lg="4">
+        <ion-card>
+          <ion-card-header color="light" class="padding-y-1-5">
+            <ion-card-title>Criar Evento</ion-card-title>
+          </ion-card-header>
+      
+          <ion-card-content>
+            <form (ngSubmit)="createEvent()" ngNativeValidate>
+              <ion-item>
+                <ion-label position="floating" color="dark">Titulo</ion-label>
+                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.name" name="name"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Descrição</ion-label>
+                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.description" name="description"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-datetime-button datetime="datetime">Data</ion-datetime-button>
+              </ion-item>
+      
+              <ion-item>
+                <ion-label position="floating" color="dark">Limite de inscrições</ion-label>
+                <ion-input label="" autocomplete="off" type="number" [(ngModel)]="postData.max_capacity" name="max_capacity"></ion-input>
+              </ion-item>
+      
+              <ion-item>
+                <ion-label position="floating" color="dark">Cidade</ion-label>
+                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.place" name="place"></ion-input>
+              </ion-item>
+
+              <ion-button (click)="takePicture()" expand="full">
+                <ion-icon lazy="true" slot="start" name="image"></ion-icon>
+                Enviar Imagem
+              </ion-button>
+      
+              <ion-button expand="full" type="submit">Criar</ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime name="date"
+      id="datetime" mode="ios" 
+      locale="pt-BR" hourCycle="h23" 
+      color="secondary" 
+      [showDefaultButtons]="true"  
+      doneText="Pronto" 
+      cancelText="Cancelar">
+    </ion-datetime>
+  </ng-template>
+</ion-modal>
