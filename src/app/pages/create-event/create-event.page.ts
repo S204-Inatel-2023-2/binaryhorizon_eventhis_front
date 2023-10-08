@@ -40,7 +40,7 @@ export class CreateEventPage implements OnInit {
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.DataUrl,
-      source: CameraSource.Prompt
+      source: CameraSource.Photos
       // resultType: CameraResultType.Base64,
       // source: CameraSouce.Photos
     });
@@ -76,7 +76,6 @@ export class CreateEventPage implements OnInit {
   
 
   createEvent() {
-    this.postData.photo = "teste";
     
     const date = new Date();
     date.setDate(date.getDate());

@@ -31,7 +31,7 @@ export class RegisterPage implements OnInit {
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.DataUrl,
-      source: CameraSource.Prompt
+      source: CameraSource.Camera
       // resultType: CameraResultType.Base64,
       // source: CameraSouce.Photos
     });

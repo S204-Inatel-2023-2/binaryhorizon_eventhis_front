@@ -11,6 +11,7 @@ import { ToastService } from 'src/app/services/toast.service';
 export class EventsPage {
   doRefresh(event: any) {
     setTimeout(() => {
+      
       event.detail.complete();
     }, 2000);
   }
