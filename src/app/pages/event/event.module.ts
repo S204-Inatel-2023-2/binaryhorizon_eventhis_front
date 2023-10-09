@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { RegisterPageRoutingModule } from './register-routing.module';
-import { RegisterPage } from './register.page';
-
+import { EventPageRoutingModule } from './event-routing.module';
+import { EventPage } from './event.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
@@ -12,9 +11,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    RegisterPageRoutingModule,
+    EventPageRoutingModule,
     SharedModule
   ],
-  declarations: [RegisterPage]
+  declarations: [EventPage]
 })
-export class RegisterPageModule {}
+export class EventPageModule {}

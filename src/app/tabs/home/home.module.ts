@@ -7,14 +7,19 @@ import { ExploreContainerComponentModule } from '../../explore-container/explore
 
 import { HomePageRoutingModule } from './home-routing.module';
 
+import { SharedModule } from '../../shared/shared.module';
+
 @NgModule({
+  declarations: [
+    HomePage
+  ],
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    SharedModule
   ],
-  declarations: [HomePage]
 })
 export class HomePageModule {}

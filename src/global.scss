@@ -68,6 +68,11 @@
     margin-bottom: 1rem;
 }
 
-ion-toolbar {
-    --background: #302F4B;
+.tab-selected {
+    color: var(--ion-color-dark-shade);
+    box-shadow: inset 0 0 3em rgba(var(--ion-color-dark-rgb), 0.1);
+}
+
+ion-fab {
+    margin: 1em;
 }
