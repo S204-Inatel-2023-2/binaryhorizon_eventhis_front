@@ -1,5 +1,10 @@
-<ion-header class="ion-text-center">
+<ion-header class="header">
   <ion-toolbar>
+    <ng-container *ngIf="isBackButton === 'true'">
+      <ion-buttons slot="start">
+        <ion-back-button 	default-href="#"></ion-back-button>
+      </ion-buttons>
+    </ng-container>
     <ion-title>
       <ng-container *ngIf="componentType === 'search-bar'">
         <ion-searchbar color="light" class="search-bar" animated="true" placeholder=""></ion-searchbar>
