@@ -33,3 +33,23 @@
     - Correção dos formulários de registro e login.
     - Mudança da versão consumida da API para v2.
     - Criação da estrutura de rota e páginas filhas em profile, levando login e registro para sua rota.
+    - Atualização de pacotes e bibliotecas descontinuadas.
+
+- [v 2.2.0](https://github.com/S204-Inatel-2023-2/binaryhorizon_eventhis_front/pull/16)
+    - Mudança estrutural de pastas (mudança de pasta raíz).
+
+- [v 2.2.1](https://github.com/S204-Inatel-2023-2/binaryhorizon_eventhis_front/pull/25)
+    - Correção de bugs de redirecionamento.
+    - Implementação de plugins de PWA (Progressive Web Apps).
+    - Instalação de pacotes de capacitor para Android.
+    - Implementação de sistema de captura e envio de fotos.
+
+- [v 2.2.2](https://github.com/S204-Inatel-2023-2/binaryhorizon_eventhis_front/pull/29)
+    - Correção de bugs de acesso de dados do usuário.
+    - Correção de temas.
+    - Correção da barra de ferramentas (toolbar).
+    - Derivação de código em componentes.
+    - Página de eventos dinâmica, recebendo dados do back-end.
+    - Página de criação de eventos criada e funcionando.
+    - Implementação de página de maiores detalhes do evento.
+    - Atualização de pacotes e bibliotecas descontinuadas.
