@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HeaderComponent  implements OnInit {
   
   @Input() componentType: 'search-bar' | 'logo' | 'just-text' = 'logo';
+  @Input() isBackButton: 'true' | 'false' = 'false';
 
   constructor() { }
 

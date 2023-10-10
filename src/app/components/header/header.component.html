@@ -1,5 +1,10 @@
-<ion-header class="ion-text-center">
+<ion-header class="header">
   <ion-toolbar>
+    <ng-container *ngIf="isBackButton === 'true'">
+      <ion-buttons slot="start">
+        <ion-back-button 	default-href="#"></ion-back-button>
+      </ion-buttons>
+    </ng-container>
     <ion-title>
       <ng-container *ngIf="componentType === 'search-bar'">
         <ion-searchbar color="light" class="search-bar" animated="true" placeholder=""></ion-searchbar>
@@ -7,8 +12,8 @@
       <ng-container *ngIf="componentType === 'logo'">
         <a routerLink="/"><img src="assets/eventhis_logo_horizontal_white.svg"></a>
       </ng-container>
-      <ng-container *ngIf="componentType === 'just-text'">
-        <h1><b>
+      <ng-container *ngIf="componentType === 'just-text'" >
+        <h1 class="ion-text-wrap" style="font-size: 1em;"><b>
           <ng-content></ng-content>
         </b></h1>
       </ng-container>

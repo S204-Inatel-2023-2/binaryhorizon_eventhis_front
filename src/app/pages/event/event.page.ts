@@ -18,7 +18,9 @@ export class EventPage implements OnInit {
     private toastService: ToastService,
     private router: Router
   ) {}
-
+  doSomething() {
+    console.log('Something');
+  }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.eventId = params['id'];

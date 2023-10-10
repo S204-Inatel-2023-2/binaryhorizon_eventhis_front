@@ -1,5 +1,5 @@
 <ng-container *ngIf="event">
-    <app-header componentType="just-text">{{ event.name }}</app-header>
+    <app-header isBackButton="true" componentType="just-text">{{ event.name }}</app-header>
 
     <ion-content>
         <ion-card>
@@ -9,9 +9,17 @@
             <ion-card-subtitle>{{ event.date | date: 'dd MMM yyyy' }} - {{event.place}}</ion-card-subtitle>
             </ion-card-header>
         
-            <ion-card-content>
+            <!-- <ion-card-content>
             <p>{{ event.description }}</p>
-            </ion-card-content>
+            </ion-card-content> -->
         </ion-card>
+
+        <ion-item>
+            <ion-label>
+              <h2>Descrição</h2>
+              <p class="ion-text-wrap">{{ event.description }}</p>
+            </ion-label>
+          </ion-item>
+        <ion-button color="primary" expand="full" (click)="doSomething()" style="padding-left: 2%; padding-right: 2%; justify-content: end;">Inscrever</ion-button>
     </ion-content>
 </ng-container>
