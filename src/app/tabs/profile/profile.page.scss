@@ -1,10 +1,11 @@
 .profile-card {
     padding: 10px;
+
   }
   
   .profile-photo {
-    max-width: 100%; /* Largura máxima em relação à largura da tela */
-    max-height: 100%; /* Altura automática para manter a proporção da imagem */
+    max-width: 100px; /* Largura máxima em relação à largura da tela */
+    max-height: 100px; /* Altura automática para manter a proporção da imagem */
     object-fit: cover; /* Para manter a proporção da imagem */
   }
   
@@ -13,9 +14,20 @@
     flex-direction: column;
     justify-content: center; /* Alinha verticalmente ao centro */
   }
+  .profile-name {
+    text-transform: lowercase !important;
+  }
+  .profile-name::first-letter {
+    text-transform: uppercase !important;
+  }
   
   h1 {
     font-size: 24px; /* Tamanho de fonte maior para o nome */
     margin-top: 0; /* Remover margem superior padrão do h1 */
   }
   
+
+  .bigger-avatar {
+    width: 90px;
+    height: 90px;
+  }

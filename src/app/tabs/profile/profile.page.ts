@@ -23,6 +23,7 @@ export class ProfilePage {
       const userData = await this.route.snapshot.data['userData']['contact'];
       if (userData) {
         this.user = userData;
+        this.user.name = this.capitalizeFirstLetter(this.user.name);
       } else {
         this.router.navigate(['/login']);
       }
@@ -30,8 +31,15 @@ export class ProfilePage {
       console.error('Erro ao obter dados do usuário:', error);
     }
   }
+
+  capitalizeFirstLetter(string: string) {
+    return string.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+  }
   
   logout() {
     this.authService.logout();
+  }
+  doSomething() {
+    console.log('Something');
   }
 }

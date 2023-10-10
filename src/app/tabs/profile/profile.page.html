@@ -1,20 +1,25 @@
-<app-header componentType="just-text">Perfil</app-header>
+<!-- <app-header componentType="just-text">Perfil</app-header>
 
 <ion-content class="ion-padding">
   <ion-grid>
     <ion-row class="ion-justify-content-center">
-      <ion-col size-sm="12" size-md="6" size-lg="4">
-
+      <ion-col size-sm="12" size-md="6" size-lg="4">        
           <ion-card *ngIf="user">
             <ion-card-content class="profile-card">
               <ion-grid>
                 <ion-row>
+
                   <ion-col size="4">
-                    <ion-img [src]="user.photo" alt="Foto do usuario" class="profile-photo"></ion-img>
+                    <ion-avatar >
+                      <ion-img [src]="user.photo" alt="Foto do usuario" class="profile-photo"></ion-img>
+                    </ion-avatar>
                   </ion-col>
+
                   <ion-col size="8" class="profile-info">
-                    <h1>{{ user.name }}</h1>
+                    <h2>{{ user.name }}</h2>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
                   </ion-col>
+
                 </ion-row>
               </ion-grid>
             </ion-card-content>
@@ -32,4 +37,70 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+</ion-content>
+ -->
+
+<app-header componentType="just-text" >Meu Perfil</app-header>
+
+<ion-content class="ion-padding" *ngIf="user">
+
+  <ion-item class="profile-card">
+    <ion-avatar slot="start" class="profile-photo bigger-avatar">
+      <ion-img [src]="user.photo" alt="Foto do usuario" ></ion-img>
+    </ion-avatar>
+    <ion-label >
+      <ion-text color="primary" class="ion-text-wrap" style="font-size: 1rem;">
+        {{ user.name }}
+      </ion-text><br>
+      <ion-note color="medium" class="ion-text-wrap" >{{ user.email }}<br>{{ user.phone }}</ion-note>
+    </ion-label>
+  </ion-item>
+  <ion-list lines="inset">
+    <ion-item>
+      <ion-label>Nome:</ion-label>
+      <ion-text color="medium" >{{ user.name }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-text color="medium" >{{ user.email }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Detalhes de contato</ion-label>
+      <ion-button fill="clear" color="medium" (click)="doSomething()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Análises</ion-label>
+      <ion-button fill="clear" color="medium" (click)="doSomething()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Atualizar senha</ion-label>
+      <ion-button fill="clear" color="medium" (click)="doSomething()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Documentação legal</ion-label>
+      <ion-button fill="clear" color="medium" (click)="doSomething()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Dar feedback</ion-label>
+      <ion-button fill="clear" color="medium" (click)="doSomething()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list lines="none">
+    <ion-item class="">
+      <ion-button class="ion-no-padding" expand="block" fill="clear" color="danger" (click)="logout()" style="font-size: 0.8rem;">
+        Log out
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <!-- <ion-button expand="full" (click)="logout()" style="padding-left: 2%; padding-right: 2%;">Logout</ion-button> -->
 </ion-content>
