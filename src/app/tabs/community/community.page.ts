@@ -34,7 +34,7 @@ export class CommunityPage {
     return string.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
   }
 
-  ngOnInit() {    
+  async ionViewWillEnter() {    
     try {
       let userData = this.route.snapshot.data['userData'];
       if (userData) {
@@ -53,21 +53,15 @@ export class CommunityPage {
 
           if(usersData) {
             this.friends = usersData;
-
-            console.log(this.user)
-
             for (let i = 0; i < this.friends.length; i++) {
               this.friends[i].contact.name = this.CapitalizeFirstLetter(this.friends[i].contact.name);
-              
-              console.log(this.friends[i])
-
-              if(this.friends[i].user_id === this.user.user_id) {
-                this.friends.splice(i, 1);
-                i--; // Decrement i to account for the removed element
-              }
 
               if(this.friends[i].contact.photo === "") {
                 this.friends[i].contact.photo = "https://placehold.co/100x100";
+              }
+              if(this.friends[i].user_id === this.user.user_id) {
+                this.friends.splice(i, 1);
+                i--; // Decrement i to account for the removed element
               }
             }
           }

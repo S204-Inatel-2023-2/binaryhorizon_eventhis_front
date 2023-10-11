@@ -42,7 +42,7 @@ export class HomePage {
     this.router.navigate(['/events/' + eventId]);
   }
 
-  ngOnInit() {
+  async ionViewWillEnter() {
     this.authService.getAllEvents().subscribe({
       next: (res: any) => {
         if (res['events']) {
@@ -79,7 +79,7 @@ export class HomePage {
     });
 
     try {
-      let userData = this.route.snapshot.data['userData'];
+      let userData = await this.route.snapshot.data['userData'];
       if (userData) {
         this.user = userData;
       } else {
@@ -93,26 +93,29 @@ export class HomePage {
       next: (res: any) => {
         if (res['users']) {
           let usersData = res['users'];
-
+          
+          
           if(usersData) {
             this.friends = usersData;
+            
 
             for (let i = 0; i < this.friends.length; i++) {
-              this.friends[i].contact.name = this.friends[i].contact.name.split(' ')[0];
-              
-              console.log(this.friends[i])
+              let fullName = this.friends[i].contact.name;
+              let firstName = fullName.split(' ')[0];
+              //pick only first name
+              this.friends[i].contact.name = firstName
+
+              if(this.friends[i].contact.photo === "") {
+                this.friends[i].contact.photo = "https://placehold.co/100x100";
+              }
 
               if(this.friends[i].user_id === this.user.user_id) {
                 this.friends.splice(i, 1);
                 i--; // Decrement i to account for the removed element
               }
 
-              if(this.friends[i].contact.photo === "") {
-                this.friends[i].contact.photo = "https://placehold.co/100x100";
-              }
             }
 
-            console.log(this.friends)
           }
         } else {
           this.toastService.presentToast('Could not find friends.');
