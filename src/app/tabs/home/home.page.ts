@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { IonicSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
+
+  swiperModules = [IonicSlides];
+
   doRefresh(event: any) {
     setTimeout(() => {
       event.detail.complete();
@@ -24,21 +27,16 @@ export class HomePage {
       data: new Date(),
       imagem: 'https://i.pinimg.com/564x/4c/95/53/4c95537739d93bea4dee245b8ed28fba.jpg'
     },
-    // Adicione mais eventos aqui
-  ]
-
-  eventosNear = [
     {
-      titulo: 'Festa Inatel!',
+      titulo: 'Festival 2',
       data: new Date(),
       imagem: 'https://i.pinimg.com/564x/31/e6/1d/31e61d2e45e57a8cdf15186c25654327.jpg'
     },
     {
-      titulo: 'Feira de oportunidades',
+      titulo: 'Hacktown 2053',
       data: new Date(),
       imagem: 'https://i.pinimg.com/564x/4c/95/53/4c95537739d93bea4dee245b8ed28fba.jpg'
-    },
-    // Adicione mais eventos aqui
+    }
   ]
 
   constructor() {}
