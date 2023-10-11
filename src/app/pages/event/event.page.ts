@@ -30,6 +30,10 @@ export class EventPage implements OnInit {
     console.log("Volte mais tarde!")
   }
 
+  goToProfile(user_id: string) {
+    this.router.navigate(['/community', user_id]);
+  }
+
   async subscribeToEvent() {
 
     if (this.user) {
@@ -77,6 +81,8 @@ export class EventPage implements OnInit {
                   if(this.event.host.user_id == this.user.user_id) {
                     this.is_owner = true;
                   }
+
+                  console.log(this.event)
 
                   let participants = this.event.participants;
                   for (let i = 0; i < participants.length; i++) {
