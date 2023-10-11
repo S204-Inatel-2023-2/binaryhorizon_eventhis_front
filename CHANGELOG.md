@@ -53,3 +53,13 @@
     - Página de criação de eventos criada e funcionando.
     - Implementação de página de maiores detalhes do evento.
     - Atualização de pacotes e bibliotecas descontinuadas.
+
+- [v 2.3.0](https://github.com/S204-Inatel-2023-2/binaryhorizon_eventhis_front/pull/37)
+    - Instalação de pacotes de capacitor para iOS.
+    - Mudança de design da página de perfil.
+    - Página de comunidade dinâmica, recebendo dados do back-end.
+    - Visualização de perfil de outras pessoas.
+    - Plugin do Swiper adicionado, para design de slides.
+
+- [v 2.4.0](https://github.com/S204-Inatel-2023-2/binaryhorizon_eventhis_front/pull/38)
+    - Armazenamento de imagens de eventos e usuários em um bucket S3 da AWS.
