@@ -37,6 +37,14 @@ export class AuthService {
     return this.httpService.post('login', postData);
   }
 
+  uploadImage(postData: any, filename: string): Observable<any> {
+    let imageData = {
+      image: postData.photo,
+      filename: filename
+    }
+    return this.httpService.postImage(imageData);
+  }
+
   signup(postData: any): Observable<any> {
     return this.httpService.post('register', postData);
   }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { SHA256 } from 'crypto-js';
 
 @Component({
   selector: 'app-create-event',
@@ -48,7 +49,6 @@ export class CreateEventPage implements OnInit {
     this.imageSource = image.dataUrl;
     this.postData.photo = this.imageSource;
     // this.imageSource = 'data:image/jpeg;base64,' + image.base64String;
-
     this.imageStateMessage = "Foto capturada";
   };
 
@@ -79,19 +79,42 @@ export class CreateEventPage implements OnInit {
     
     const date = new Date();
     date.setDate(date.getDate());
-    
     this.postData.date = date.toISOString();
 
-    console.log(this.postData);
-    this.authService.createEvent(this.postData).subscribe({
+    //define filename
+    const seed = this.postData.name + this.postData.host_id;
+    const filename = SHA256(seed).toString();
+
+    //upload image
+    this.authService.uploadImage(this.postData, filename).subscribe({
       next: (res: any) => {
-        if (res['event']) {
+        if (res['url']) {
+          this.postData.photo = res['url'];
 
-          this.event = res['event'];
 
-          var url = '/events/' + this.event.event_id;
+          //create event
+          this.authService.createEvent(this.postData).subscribe({
+            next: (res: any) => {
+              if (res['event']) {
+      
+                this.event = res['event'];
+      
+                var url = '/events/' + this.event.event_id;
+      
+                this.router.navigate([url]);
+              } else {
+                this.toastService.presentToast(
+                  'Data alreay exists, please enter new details.'
+                );
+              }
+            },
+            error: (error: any) => {
+              this.toastService.presentToast('Could not create event.');
+            }
+          });
 
-          this.router.navigate([url]);
+
+
         } else {
           this.toastService.presentToast(
             'Data alreay exists, please enter new details.'
@@ -102,5 +125,8 @@ export class CreateEventPage implements OnInit {
         this.toastService.presentToast('Could not create event.');
       }
     });
+
+
+
   }
 }

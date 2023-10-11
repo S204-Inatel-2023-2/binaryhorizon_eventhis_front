@@ -58,4 +58,29 @@ export class HttpService {
 
       return this.http.delete(url, options);
     }
+
+
+    // image API methods
+    postImage(data: any) {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+      const options = { headers: headers, withCredintials: false };
+      const url = environment.imageApiUrl + 'upload';
+      return this.http.post(url, JSON.stringify(data), options);
+    }
+
+    deleteImage(data: any) {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+      const options = { headers: headers, withCredintials: false };
+      var url = environment.imageApiUrl + 'delete';;
+      if (data) {
+        url = url + "/" + data;
+      }
+
+      return this.http.delete(url, options);
+    }
+
 } 

@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { SHA256 } from 'crypto-js';
 
 @Component({
   selector: 'app-register',
@@ -30,15 +31,13 @@ export class RegisterPage implements OnInit {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
-      resultType: CameraResultType.DataUrl,
+      resultType: CameraResultType.Base64,
       source: CameraSource.Camera
-      // resultType: CameraResultType.Base64,
-      // source: CameraSouce.Photos
+
     });
 
-    this.imageSource = image.dataUrl;
+    this.imageSource = 'data:image/jpeg;base64,' + image.base64String;
     this.postData.photo = this.imageSource;
-    // this.imageSource = 'data:image/jpeg;base64,' + image.base64String;
 
     this.imageStateMessage = "Foto capturada";
   };
@@ -60,7 +59,6 @@ export class RegisterPage implements OnInit {
   }
 
   validateInputs() {
-    console.log(this.postData);
     let name = this.postData.name.trim();
     let password = this.postData.password.trim();
     let email = this.postData.email.trim();
@@ -76,16 +74,38 @@ export class RegisterPage implements OnInit {
   }
   register() {
     if (this.validateInputs()) {
-      this.authService.signup(this.postData).subscribe({
+
+      //define filename
+      const seed = this.postData.email;
+      const filename = SHA256(seed).toString();
+
+      this.authService.uploadImage(this.postData, filename).subscribe({
         next: (res: any) => {
-          if (res['user']) {
-            // If the response includes user data, it means the login was successful.
+          if (res['url']) {
+            this.postData.photo = res['url'];
+    
+            this.authService.signup(this.postData).subscribe({
+              next: (res: any) => {
+                if (res['user']) {
+                  // If the response includes user data, it means the login was successful.
+        
+                  // Stores the user data in a local storage system.
+                  this.storageService.store(AuthConstants.AUTH, res['user']);
+        
+                  // Then, redirects the user to the main page (route '/') of your application.
+                  this.router.navigate(['/']);
+                } else {
+                  this.toastService.presentToast(
+                    'Data alreay exists, please enter new details.'
+                  );
+                }
+              },
+              error: (error: any) => {
+                this.toastService.presentToast('Network Issue.');
+              }
+            });
   
-            // Stores the user data in a local storage system.
-            this.storageService.store(AuthConstants.AUTH, res['user']);
   
-            // Then, redirects the user to the main page (route '/') of your application.
-            this.router.navigate(['/']);
           } else {
             this.toastService.presentToast(
               'Data alreay exists, please enter new details.'
@@ -96,6 +116,8 @@ export class RegisterPage implements OnInit {
           this.toastService.presentToast('Network Issue.');
         }
       });
+  
+    
     } else {
       this.toastService.presentToast(
         'Please enter email, username or password.'
