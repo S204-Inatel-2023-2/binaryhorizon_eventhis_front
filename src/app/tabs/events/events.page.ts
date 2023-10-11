@@ -35,14 +35,17 @@ export class EventsPage {
     this.router.navigate(['/events/new']);
   }
 
-  async ngOnInit() {
+  async ngOnInit() {}
+
+  async ionViewWillEnter() {
     try {
-      const userData = await this.route.snapshot.data['userData']['contact'];
+      const userData = await this.route.snapshot.data['userData'];
       if (userData) {
         this.user = userData;
-        if(this.user.is_staff) {
-          this.isStaff = true;
-        }
+        this.isStaff = this.user.is_staff;
+      }
+      else{
+        this.isStaff = false;
       }
     } catch (error) {
       console.error('Erro ao obter dados do usuário:', error);

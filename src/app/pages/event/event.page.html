@@ -30,6 +30,10 @@
           <ion-button color="primary" expand="full" (click)="editEvent()" 
           style="padding-left: 2%; padding-right: 2%; justify-content: end;">Editar</ion-button>
 
+        <div class="ion-padding">
+          <div class="list-title">
+            <h2>Participantes</h2>
+          </div>
 
           <ion-list>
             <ion-item *ngFor="let participant of event.participants" class="margin-y-1">
@@ -42,6 +46,7 @@
         
             </ion-item>
           </ion-list>
+        </div>
 
 
         </ng-container>
