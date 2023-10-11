@@ -1,6 +1,7 @@
 <app-header></app-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-no-padding">
+<ion-content class="ion-no-padding">
   <ion-refresher (ionRefresh)="doRefresh($event)" slot="fixed">
     <ion-refresher-content
       pullingIcon="arrow-down"
@@ -10,33 +11,62 @@
     ></ion-refresher-content>
   </ion-refresher>
 
-  <div class="list-title">
-    <h1>Pode te interessar</h1>
+  <div class="ion-padding box-shadow">
+    <div class="list-title">
+      <h1>Pode te interessar</h1>
+    </div>
+    
+    <swiper-container 
+      [modules]="swiperModules"
+      [slidesPerView]="1.15"
+      [loop] = "false">
+      <swiper-slide *ngFor="let evento of eventos">
+        <ion-card>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="9" class="ion-text-start light-contrast">
+                <h3><strong>{{ evento.titulo }}</strong></h3>
+                <p class="subtitle">{{ evento.data | date: 'dd MMM yyyy' }} - {{evento.titulo}}</p>
+                <p class="subtitle">by Event Organizer</p>
+              </ion-col>
+              <ion-col size="3">
+                <img [src]="evento.imagem" alt="Image" width="100%" height="auto">
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>    
+      </swiper-slide>
+    </swiper-container>
   </div>
   
-  <ion-list>
-    <ion-item *ngFor="let evento of eventos">
-      <ion-thumbnail slot="start">
-        <img [src]="evento.imagem">
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{ evento.titulo }}</h2>
-        <p>{{ evento.data | date:'mediumDate' }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-  <h1>Eventos perto de você</h1>
-  <ion-list>
-    <ion-item *ngFor="let evento of eventosNear">
-      <ion-thumbnail slot="start">
-        <img [src]="evento.imagem">
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{ evento.titulo }}</h2>
-        <p>{{ evento.data | date:'mediumDate' }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-
-
+  <!-- Divisão com fundo branco -->
+  <div class="section-divider"></div>
+  
+  <div class="ion-padding">
+    <div class="list-title">
+      <h1>Também pode te interessar</h1>
+    </div>
+    
+    <swiper-container 
+      [modules]="swiperModules"
+      [slidesPerView]="1.15"
+      [loop] = "false">
+      <swiper-slide *ngFor="let evento of eventos">
+        <ion-card>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="9" class="ion-text-start light-contrast">
+                <h3><strong>{{ evento.titulo }}</strong></h3>
+                <p class="subtitle">{{ evento.data | date: 'dd MMM yyyy' }} - {{evento.titulo}}</p>
+                <p class="subtitle">by Event Organizer</p>
+              </ion-col>
+              <ion-col size="3">
+                <img [src]="evento.imagem" alt="Image" width="100%" height="auto">
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>    
+      </swiper-slide>
+    </swiper-container>
+  </div>
 </ion-content>
