@@ -1,0 +1,19 @@
+<ng-container *ngIf="user">
+  <app-header componentType="just-text">Comunidade</app-header>
+
+  <ion-content class="ion-padding">
+
+    <ion-item class="profile-card">
+      <ion-avatar slot="start" class="profile-photo bigger-avatar">
+        <ion-img [src]="user.contact.photo" alt="Foto do usuario" ></ion-img>
+      </ion-avatar>
+      <ion-label >
+        <ion-text color="primary" class="ion-text-wrap" style="font-size: 1rem;">
+          {{ user.contact.name }}
+        </ion-text><br>
+        <ion-note color="medium" class="ion-text-wrap" >{{ user.contact.email }}<br>{{ user.contact.phone }}</ion-note>
+      </ion-label>
+    </ion-item>
+    
+  </ion-content>
+</ng-container>
