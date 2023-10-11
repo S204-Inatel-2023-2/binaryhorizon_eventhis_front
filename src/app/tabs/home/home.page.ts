@@ -82,8 +82,6 @@ export class HomePage {
       let userData = await this.route.snapshot.data['userData'];
       if (userData) {
         this.user = userData;
-      } else {
-        this.router.navigate(['/login']);
       }
     } catch (error) {
       console.error('Erro ao obter dados do usuário:', error);
@@ -109,9 +107,11 @@ export class HomePage {
                 this.friends[i].contact.photo = "https://placehold.co/100x100";
               }
 
-              if(this.friends[i].user_id === this.user.user_id) {
-                this.friends.splice(i, 1);
-                i--; // Decrement i to account for the removed element
+              if(this.user){
+                if(this.friends[i].user_id === this.user.user_id) {
+                  this.friends.splice(i, 1);
+                  i--; // Decrement i to account for the removed element
+                }
               }
 
             }
