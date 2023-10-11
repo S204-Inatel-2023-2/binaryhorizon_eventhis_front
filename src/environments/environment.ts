@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://api.eventhis.tech/api/v2/',
-  imageApiUrl: 'http://localhost:5000/api/v1/'
+  imageApiUrl: 'https://binaryhorizon-eventhis-image-api-jml6hjddaq-uc.a.run.app/api/v1/'
 };
 
 /*
