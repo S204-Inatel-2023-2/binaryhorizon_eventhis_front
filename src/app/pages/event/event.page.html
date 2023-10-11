@@ -8,10 +8,6 @@
             <ion-card-title>{{ event.name }}</ion-card-title>
             <ion-card-subtitle>{{ event.date | date: 'dd MMM yyyy' }} - {{event.place}}</ion-card-subtitle>
             </ion-card-header>
-        
-            <!-- <ion-card-content>
-            <p>{{ event.description }}</p>
-            </ion-card-content> -->
         </ion-card>
 
         <ion-item>
@@ -20,6 +16,20 @@
               <p class="ion-text-wrap">{{ event.description }}</p>
             </ion-label>
           </ion-item>
-        <ion-button color="primary" expand="full" (click)="doSomething()" style="padding-left: 2%; padding-right: 2%; justify-content: end;">Inscrever</ion-button>
+        <ng-container *ngIf="is_owner===false && is_subscribed===false">
+          <ion-button color="primary" expand="full" (click)="subscribeToEvent()" 
+          style="padding-left: 2%; padding-right: 2%; justify-content: end;">Inscrever</ion-button>
+        </ng-container>
+
+        <ng-container *ngIf="is_owner===true">
+          <ion-button color="primary" expand="full" (click)="editEvent()" 
+          style="padding-left: 2%; padding-right: 2%; justify-content: end;">Editar</ion-button>
+        </ng-container>
+        
+        <ng-container *ngIf="is_subscribed===true">
+          <ion-button color="primary" expand="full" (click)="unsubscribeFromEvent()" 
+          style="padding-left: 2%; padding-right: 2%; justify-content: end;">Desinscrever</ion-button>
+        </ng-container>
+
     </ion-content>
 </ng-container>
