@@ -17,6 +17,8 @@ export class EventsPage {
   }
 
   events: any;
+  user: any;
+  isStaff: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +35,19 @@ export class EventsPage {
     this.router.navigate(['/events/new']);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    try {
+      const userData = await this.route.snapshot.data['userData']['contact'];
+      if (userData) {
+        this.user = userData;
+        if(this.user.is_staff) {
+          this.isStaff = true;
+        }
+      }
+    } catch (error) {
+      console.error('Erro ao obter dados do usuário:', error);
+    }
+
     this.route.params.subscribe(params => {
       
       this.authService.getAllEvents().subscribe({
@@ -49,9 +63,7 @@ export class EventsPage {
                   this.events[i].photo = "https://placehold.co/600x400";
                 }
               }
-
             }
-            
           } else {
             this.toastService.presentToast('Could not find event.');
 

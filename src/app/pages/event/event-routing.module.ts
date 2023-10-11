@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { EventPage } from './event.page';
+import { UserDataResolver } from 'src/app/resolvers/user-data.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    component: EventPage
+    component: EventPage,
+    resolve: {
+      userData: UserDataResolver
+    }
   }
 ];
 

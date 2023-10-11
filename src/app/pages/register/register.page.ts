@@ -21,11 +21,21 @@ export class RegisterPage implements OnInit {
     company: '',
     linkedin: '',
     phone: '',
-    photo: ''
+    photo: '', 
+    is_staff: false
   };
 
   imageSource:any;
   imageStateMessage = "Foto não capturada";
+
+  changeStaff = (event:any) => {
+
+    if (!this.postData.is_staff) {
+      setTimeout(() => { this.postData.is_staff = true; });
+    } else {
+      setTimeout(() => { this.postData.is_staff = false; });
+    }
+  }
 
   takePicture = async () => {
     const image = await Camera.getPhoto({
@@ -72,6 +82,7 @@ export class RegisterPage implements OnInit {
       password.length > 0
     );
   }
+
   register() {
     if (this.validateInputs()) {
 

@@ -17,6 +17,11 @@ export class AuthService {
     private router: Router
   ) {}
 
+  subscribeToEvent(event_id:any, participant_id:any): Observable<any> {
+    const url = 'events/' + event_id + '/add-participant/' + participant_id;
+    return this.httpService.post(url);
+  }
+
   getUserData(): Promise<any> {
     return this.storageService.get(AuthConstants.AUTH);
   }
@@ -54,7 +59,7 @@ export class AuthService {
   }
 
   signup(postData: any): Observable<any> {
-    return this.httpService.post('register', postData);
+    return this.httpService.post('users', postData);
   }
 
   logout() {

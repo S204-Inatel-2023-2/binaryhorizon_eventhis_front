@@ -12,24 +12,24 @@
 
   <div class="ion-padding box-shadow">
     <div class="list-title">
-      <h1>Pode te interessar</h1>
+      <h2>Pode te interessar</h2>
     </div>
     
     <swiper-container 
       [modules]="swiperModules"
       [slidesPerView]="1.15"
-      [loop] = "false">
-      <swiper-slide *ngFor="let evento of eventos">
-        <ion-card>
+      [loop] = "false" *ngIf="events1">
+      <swiper-slide *ngFor="let event of events1">
+        <ion-card (click)="goToEventDetails(event.event_id)">
           <ion-card-content>
             <ion-row>
               <ion-col size="9" class="ion-text-start light-contrast">
-                <h3><strong>{{ evento.titulo }}</strong></h3>
-                <p class="subtitle">{{ evento.data | date: 'dd MMM yyyy' }} - {{evento.titulo}}</p>
-                <p class="subtitle">by Event Organizer</p>
+                <h3><strong>{{ event.name }}</strong></h3>
+                <p class="subtitle">{{ event.date | date: 'dd MMM yyyy' }}</p>
+                <p class="subtitle">by {{ event.host.contact.name }}</p>
               </ion-col>
               <ion-col size="3">
-                <img [src]="evento.imagem" alt="Image" width="100%" height="auto">
+                <img [src]="event.photo" alt="Image" class="event-image" >
               </ion-col>
             </ion-row>
           </ion-card-content>
@@ -38,29 +38,28 @@
     </swiper-container>
   </div>
   
-  <!-- Divisão com fundo branco -->
   <div class="section-divider"></div>
   
-  <div class="ion-padding">
+  <div class="ion-padding box-shadow">
     <div class="list-title">
-      <h1>Também pode te interessar</h1>
+      <h2>Eventos mais recentes</h2>
     </div>
     
     <swiper-container 
       [modules]="swiperModules"
       [slidesPerView]="1.15"
-      [loop] = "false">
-      <swiper-slide *ngFor="let evento of eventos">
-        <ion-card>
+      [loop] = "false" *ngIf="events2">
+      <swiper-slide *ngFor="let event of events2">
+        <ion-card (click)="goToEventDetails(event.event_id)">
           <ion-card-content>
             <ion-row>
               <ion-col size="9" class="ion-text-start light-contrast">
-                <h3><strong>{{ evento.titulo }}</strong></h3>
-                <p class="subtitle">{{ evento.data | date: 'dd MMM yyyy' }} - {{evento.titulo}}</p>
-                <p class="subtitle">by Event Organizer</p>
+                <h3><strong>{{ event.name }}</strong></h3>
+                <p class="subtitle">{{ event.date | date: 'dd MMM yyyy' }}</p>
+                <p class="subtitle">by {{ event.host.contact.name }}</p>
               </ion-col>
               <ion-col size="3">
-                <img [src]="evento.imagem" alt="Image" width="100%" height="auto">
+                <img [src]="event.photo" alt="Image" class="event-image" >
               </ion-col>
             </ion-row>
           </ion-card-content>
@@ -68,4 +67,31 @@
       </swiper-slide>
     </swiper-container>
   </div>
+
+  <div class="section-divider"></div>
+
+  <div class="ion-padding box-shadow">
+    <div class="list-title">
+      <h2>Talvez você conheça</h2>
+    </div>
+    
+    <swiper-container 
+      [modules]="swiperModules"
+      [slidesPerView]="2.1"
+      [loop] = "false" *ngIf="friends">
+      <swiper-slide *ngFor="let user of friends">
+        <ion-card class="custom-width">
+          <img alt="{{ user.contact.name }}" src="{{ user.contact.photo }}" class="user-image" />
+          <ion-card-header>
+            <ion-card-title clas="user-name">{{ user.contact.name }}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-button shape="round" fill="outline" color="tertiary" size="small" (click)="goToProfile(user.user_id)">Ver perfil</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </swiper-slide>
+    </swiper-container>
+  </div>  
+
 </ion-content>
