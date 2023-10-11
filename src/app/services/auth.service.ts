@@ -21,6 +21,14 @@ export class AuthService {
     return this.storageService.get(AuthConstants.AUTH);
   }
 
+  getUser(getData: any): Observable<any> {
+    return this.httpService.get('users', getData);
+  }
+
+  getAllUsers(): Observable<any> {
+    return this.httpService.get('users');
+  }
+
   getEventData(getData: any): Observable<any> {
     return this.httpService.get('events', getData);
   }

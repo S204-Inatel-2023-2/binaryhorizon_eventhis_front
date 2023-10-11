@@ -18,9 +18,10 @@
     <ion-item *ngFor="let friend of friends" class="margin-y-1">
 
       <ion-avatar slot="start">
-        <img alt="Silhouette of a person's head" src="{{ friend.image }}" />
+        <img alt="Silhouette of a person's head" src="{{ friend.contact.photo }}" />
       </ion-avatar>
-      <ion-label>{{ friend.name }} </ion-label>
+      <ion-label>{{ friend.contact.name }} </ion-label>
+      <ion-button shape="round" fill="outline" color="tertiary" (click)="goToProfile(friend.user_id)">Ver perfil</ion-button>
 
     </ion-item>
   </ion-list>
