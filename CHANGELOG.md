@@ -63,3 +63,10 @@
 
 - [v 2.4.0](https://github.com/S204-Inatel-2023-2/binaryhorizon_eventhis_front/pull/38) (11/out)
     - Armazenamento de imagens de eventos e usuários em um bucket S3 da AWS.
+
+- [v 2.4.1](https://github.com/S204-Inatel-2023-2/binaryhorizon_eventhis_front/pull/40) (11/out)
+    - Página inicial dinâmica
+    - Registro de usuário como staff (organizador de eventos)
+    - Adaptação do botão de adicionar evento, para participantes.
+    - Tela de evento adaptada para organizador do evento, inscritos e não-inscritos.
+    - Visualização dos participantes do evento, pela visão do organizador.
