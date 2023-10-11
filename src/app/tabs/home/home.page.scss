@@ -24,7 +24,7 @@ swiper-slide {
     box-sizing: border-box;
 }
   
-swiper-slide img {
+.event-image {
     width: auto;
     width: 100%;
     height: auto;
@@ -43,5 +43,26 @@ p.subtitle {
 
 .section-divider {
     background-color: lightgray;
-    height: 1em;
+    height: 0.6em;
+}
+
+.box-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+}
+
+.user-image {
+    border-radius: 50%;
+    padding: 0.5em;
+    width: 80%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+}
+
+.custom-width {
+    width: 95%;
+}
+
+.user-name {
+    font-size: medium;
+    font-weight: bold;
 }

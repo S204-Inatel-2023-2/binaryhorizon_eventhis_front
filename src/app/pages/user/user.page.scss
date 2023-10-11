@@ -1,0 +1,31 @@
+.profile-card {
+    padding: 10px;
+}
+
+.profile-photo {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover; /* Para manter a proporção da imagem */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Alinha verticalmente ao centro */
+}
+.profile-name {
+    text-transform: lowercase !important;
+}
+.profile-name::first-letter {
+    text-transform: uppercase !important;
+}
+
+h1 {
+    font-size: 24px; /* Tamanho de fonte maior para o nome */
+    margin-top: 0; /* Remover margem superior padrão do h1 */
+}
+
+.bigger-avatar {
+    width: 90px;
+    height: 90px;
+}
