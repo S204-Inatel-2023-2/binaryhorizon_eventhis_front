@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api.eventhis.tech/api/v2/'
+  apiUrl: 'https://api.eventhis.tech/api/v2/',
+  imageApiUrl: 'http://localhost:5000/api/v1/'
 };
 
 /*
