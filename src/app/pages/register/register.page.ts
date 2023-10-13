@@ -39,16 +39,15 @@ export class RegisterPage implements OnInit {
 
   takePicture = async () => {
     const image = await Camera.getPhoto({
-      quality: 90,
+      quality: 100,
       allowEditing: false,
-      resultType: CameraResultType.Base64,
+      resultType: CameraResultType.DataUrl,
       source: CameraSource.Camera
 
     });
-
-    this.imageSource = 'data:image/jpeg;base64,' + image.base64String;
+    console.log(image);
+    this.imageSource = image.dataUrl;
     this.postData.photo = this.imageSource;
-
     this.imageStateMessage = "Foto capturada";
   };
 
@@ -72,14 +71,15 @@ export class RegisterPage implements OnInit {
     let name = this.postData.name.trim();
     let password = this.postData.password.trim();
     let email = this.postData.email.trim();
-
+    let photo = this.postData.photo.trim();
     return (
       this.postData.name &&
       this.postData.password &&
       this.postData.email &&
       name.length > 0 &&
       email.length > 0 &&
-      password.length > 0
+      password.length > 0 &&
+      photo.length > 0
     );
   }
 
@@ -131,7 +131,7 @@ export class RegisterPage implements OnInit {
     
     } else {
       this.toastService.presentToast(
-        'Please enter email, username or password.'
+        'Please enter Name, email, password and a photo.'
       );
     }
   }

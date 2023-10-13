@@ -45,7 +45,7 @@ export class CreateEventPage implements OnInit {
       // resultType: CameraResultType.Base64,
       // source: CameraSouce.Photos
     });
-
+    console.log(image);
     this.imageSource = image.dataUrl;
     this.postData.photo = this.imageSource;
     // this.imageSource = 'data:image/jpeg;base64,' + image.base64String;

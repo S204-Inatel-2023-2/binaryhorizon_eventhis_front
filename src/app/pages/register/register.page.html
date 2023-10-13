@@ -12,18 +12,23 @@
           <ion-card-content>
             <form (ngSubmit)="register()" ngNativeValidate>
               <ion-item>
-                <ion-label position="floating" color="dark">Nome</ion-label>
-                <ion-input label="" autocomplete="off" type="text" [(ngModel)]="postData.name" name="name"></ion-input>
+                <!-- <ion-label position="floating" color="dark">Nome</ion-label> -->
+                <ion-input labelPlacement="floating" autocomplete="off" type="text" [(ngModel)]="postData.name" name="name">
+                  <div slot="label">Nome <ion-text color="danger">*</ion-text></div>
+                </ion-input>
               </ion-item>
 
               <ion-item>
-                <ion-label position="floating">E-mail</ion-label>
-                <ion-input label="" autocomplete="off" type="email" [(ngModel)]="postData.email" name="email"></ion-input>
+                <ion-input labelPlacement="floating" autocomplete="off" type="email" [(ngModel)]="postData.email" name="email">
+                  <div slot="label">E-mail <ion-text color="danger">*</ion-text></div>
+                </ion-input>
               </ion-item>
       
               <ion-item>
-                <ion-label position="floating" color="dark">Senha</ion-label>
-                <ion-input label="" autocomplete="off" type="password" [(ngModel)]="postData.password" name="password"></ion-input>
+                
+                <ion-input labelPlacement="floating" autocomplete="off" type="password" [(ngModel)]="postData.password" name="password">
+                  <div slot="label">Senha <ion-text color="danger">*</ion-text></div>
+                </ion-input>
               </ion-item>
       
               <ion-item>
@@ -46,10 +51,12 @@
               </ion-item>
 
               <ion-item>
-                <ion-label slot="end">{{imageStateMessage}}</ion-label>
+                <ion-label position="floating" color="dark">
+                </ion-label>
+                <div>Foto<ion-text color="danger">*</ion-text></div>
                 <ion-button (click)="takePicture()"> 
                   <ion-icon lazy="true" slot="start" name="image"></ion-icon> 
-                  Imagem
+                  {{imageStateMessage}}
                 </ion-button>
               </ion-item>
       
