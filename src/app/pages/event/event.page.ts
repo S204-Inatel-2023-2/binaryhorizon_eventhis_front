@@ -53,7 +53,8 @@ export class EventPage implements OnInit {
         }
       },
       error: (error: any) => {
-        this.toastService.presentToast('Não foi possível validar o check-in!');
+        this.toastService.presentToast('Faces não identificadas! Tente novamente.');
+        console.log(error['error']['Message']);
       }
     });
   };
