@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-event',
@@ -22,11 +23,46 @@ export class EventPage implements OnInit {
     private router: Router
   ) {}
 
+  postData = {
+    image_url: "",
+    image: "",
+  }  
+
+  doCheckin = async (image_url: string, user_id: string) => {
+    this.postData.image_url = image_url
+
+    const image = await Camera.getPhoto({
+      quality: 100,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
+    
+    if (image.dataUrl) {
+      this.postData.image = image.dataUrl;
+    }
+
+    console.log(this.postData);
+
+    this.authService.facialRecognition(this.postData).subscribe({
+      next: (res: any) => {
+        if(res['Response'] == true) {
+          this.toastService.presentToast('Check-in realizado com sucesso!');
+        } else {
+          this.toastService.presentToast('Não foi possível validar o check-in!');
+        }
+      },
+      error: (error: any) => {
+        this.toastService.presentToast('Não foi possível validar o check-in!');
+      }
+    });
+  };
+
   editEvent() {
     console.log("Volte mais tarde para editar o evento!")
   }
 
-  unsubscribeFromEvent() {
+    unsubscribeFromEvent() {
     console.log("Volte mais tarde para se desinscrever desse evento!")
   }
 

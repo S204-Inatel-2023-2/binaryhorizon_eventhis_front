@@ -58,6 +58,14 @@ export class AuthService {
     return this.httpService.postImage(imageData);
   }
 
+  facialRecognition(postData: any): Observable<any> {
+    let imageData = {
+      "image": postData.image,
+      "image-url": postData.image_url
+    }
+    return this.httpService.facialRecognition(imageData);
+  }
+
   signup(postData: any): Observable<any> {
     return this.httpService.post('users', postData);
   }

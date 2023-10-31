@@ -45,7 +45,6 @@ export class RegisterPage implements OnInit {
       source: CameraSource.Camera
 
     });
-    console.log(image);
     this.imageSource = image.dataUrl;
     this.postData.photo = this.imageSource;
     this.imageStateMessage = "Foto capturada";

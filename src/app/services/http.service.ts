@@ -61,6 +61,15 @@ export class HttpService {
 
 
     // image API methods
+    facialRecognition(data: any) {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+      const options = { headers: headers, withCredintials: false };
+      const url = environment.imageApiUrl + 'face-recognition';
+      return this.http.post(url, JSON.stringify(data), options);
+    }
+
     postImage(data: any) {
       const headers = new HttpHeaders({
         'Content-Type': 'application/json'
