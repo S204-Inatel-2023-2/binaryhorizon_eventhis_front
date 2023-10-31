@@ -42,7 +42,7 @@
                 <img alt="Silhouette of a person's head" src="{{ participant.contact.photo }}" />
               </ion-avatar>
               <ion-label>{{ participant.contact.name }} </ion-label>
-              <ion-button shape="round" fill="outline" color="tertiary" (click)="goToProfile(participant.user_id)">Ver perfil</ion-button>
+              <ion-button shape="round" fill="outline" color="tertiary" (click)="doCheckin(participant.contact.photo, participant.contact.user_id)">Fazer check-in</ion-button>
         
             </ion-item>
           </ion-list>
