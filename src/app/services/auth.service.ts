@@ -22,6 +22,16 @@ export class AuthService {
     return this.httpService.post(url);
   }
 
+  unsubscribeToEvent(event_id:any, participant_id:any): Observable<any> {
+    const url = 'events/' + event_id + '/remove-participant/' + participant_id;
+    return this.httpService.post(url);
+  }
+
+  checkinParticipant(event_id:any, participant_id:any): Observable<any> {
+    const url = 'events/' + event_id + '/checkin-participant/' + participant_id;
+    return this.httpService.post(url);
+  }
+
   getUserData(): Promise<any> {
     return this.storageService.get(AuthConstants.AUTH);
   }
@@ -44,6 +54,11 @@ export class AuthService {
 
   createEvent(postData: any): Observable<any> {
     return this.httpService.post('events', postData);
+  }
+
+  editEvent(event_id:any, postData: any): Observable<any> {
+    const url = 'events/' + event_id;
+    return this.httpService.put(url, postData);
   }
 
   login(postData: any): Observable<any> {

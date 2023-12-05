@@ -22,7 +22,15 @@
               </ion-item>
 
               <ion-item>
-                <ion-datetime-button datetime="datetime">Data</ion-datetime-button>
+                <ion-label>Data</ion-label>
+                <ion-datetime
+                  name="date"
+                  mode="ios"
+                  locale="pt-BR"
+                  color="secondary"
+                  [(ngModel)]="postData.date"
+                  [max]="2030-01-01"
+                ></ion-datetime>
               </ion-item>
       
               <ion-item>
@@ -37,7 +45,7 @@
 
               <ion-button (click)="takePicture()" expand="full">
                 <ion-icon lazy="true" slot="start" name="image"></ion-icon>
-                Enviar Imagem
+                {{imageStateMessage}}
               </ion-button>
       
               <ion-button expand="full" type="submit">Criar</ion-button>
@@ -48,16 +56,3 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
-<ion-modal [keepContentsMounted]="true">
-  <ng-template>
-    <ion-datetime name="date"
-      id="datetime" mode="ios" 
-      locale="pt-BR" hourCycle="h23" 
-      color="secondary" 
-      [showDefaultButtons]="true"  
-      doneText="Pronto" 
-      cancelText="Cancelar">
-    </ion-datetime>
-  </ng-template>
-</ion-modal>

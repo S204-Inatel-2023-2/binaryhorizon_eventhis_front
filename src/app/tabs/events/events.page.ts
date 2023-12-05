@@ -60,7 +60,8 @@ export class EventsPage {
 
             if(eventsData) {
               this.events = eventsData;
-
+              this.ordenarEventosPorData();
+              
               for (let i = 0; i < this.events.length; i++) {
                 if(this.events[i].photo === "") {
                   this.events[i].photo = "https://placehold.co/600x400";
@@ -79,6 +80,16 @@ export class EventsPage {
           this.router.navigate(['/events']);
         }
       });
+    });
+  }
+  ordenarEventosPorData() {
+    this.events.sort((a: any, b: any) => {
+      // Converta as strings de data para objetos Date para comparação
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+
+      // Compare as datas
+      return dateA.getTime() - dateB.getTime();
     });
   }
 }

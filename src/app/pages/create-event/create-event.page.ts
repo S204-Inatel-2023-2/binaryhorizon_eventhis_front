@@ -11,7 +11,6 @@ import { SHA256 } from 'crypto-js';
   styleUrls: ['./create-event.page.scss'],
 })
 export class CreateEventPage implements OnInit {
-  public datetime: any;
 
   postData = {
     name: '',
@@ -22,7 +21,7 @@ export class CreateEventPage implements OnInit {
     photo: '',
     host_id: ''
   };
-
+  
   event: any
 
   constructor(
@@ -34,7 +33,7 @@ export class CreateEventPage implements OnInit {
 
 
   imageSource:any;
-  imageStateMessage = "Foto não capturada";
+  imageStateMessage = "Foto não carregada";
 
   takePicture = async () => {
     const image = await Camera.getPhoto({
@@ -49,16 +48,20 @@ export class CreateEventPage implements OnInit {
     this.imageSource = image.dataUrl;
     this.postData.photo = this.imageSource;
     // this.imageSource = 'data:image/jpeg;base64,' + image.base64String;
-    this.imageStateMessage = "Foto capturada";
+    this.imageStateMessage = "Foto carregada";
   };
 
   discardPicture = async () => {
     this.imageSource = '';
     this.postData.photo = '';
-    this.imageStateMessage = "Foto não capturada";
+    this.imageStateMessage = "Foto não carregada";
   }
 
   ngOnInit() {
+    // Converta sua string de data para o formato ISO 8601
+    let dateString = new Date();
+    let isoDateString = new Date(dateString).toISOString();
+    this.postData.date = isoDateString
   }
 
   async ngAfterViewInit() {
@@ -77,9 +80,6 @@ export class CreateEventPage implements OnInit {
 
   createEvent() {
     
-    const date = new Date();
-    date.setDate(date.getDate());
-    this.postData.date = date.toISOString();
 
     //define filename
     const seed = this.postData.name + this.postData.host_id;
