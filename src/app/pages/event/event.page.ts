@@ -42,14 +42,30 @@ export class EventPage implements OnInit {
       this.postData.image = image.dataUrl;
     }
 
-    console.log(this.postData);
-
     this.authService.facialRecognition(this.postData).subscribe({
       next: (res: any) => {
         if(res['Response'] == true) {
-          this.toastService.presentToast('Check-in realizado com sucesso!');
+
+
+          //realizando checkin
+          this.authService.checkinParticipant(this.eventId, user_id).subscribe({
+            next: (res: any) => {
+              if (res['success']) {
+                this.toastService.presentToast('Check-in realizado com sucesso!');
+                window.location.reload();
+              } else {
+                this.toastService.presentToast('Não foi possível validar o check-in!');
+              }
+            },
+            error: (error: any) => {
+              this.toastService.presentToast('Falha ao realizar check-in!');
+              console.log(error['error']['Message']);
+            }
+          });
+
+
         } else {
-          this.toastService.presentToast('Não foi possível validar o check-in!');
+          this.toastService.presentToast('Não realizar o reconhecimento facial!');
         }
       },
       error: (error: any) => {
@@ -63,8 +79,32 @@ export class EventPage implements OnInit {
     console.log("Volte mais tarde para editar o evento!")
   }
 
-    unsubscribeFromEvent() {
-    console.log("Volte mais tarde para se desinscrever desse evento!")
+  async  unsubscribeFromEvent() {
+
+    if (this.user) {
+
+      this.authService.unsubscribeToEvent(this.eventId, this.user.user_id).subscribe({
+        next: (res: any) => {
+          if (res['success']) {
+            this.toastService.presentToast('Você se desinscreveu deste evento.');
+            window.location.reload();
+          } else {
+            this.toastService.presentToast('Não foi possível se desinscrever deste evento.');
+          }
+        },
+        error: (error: any) => {
+          this.toastService.presentToast("Could not find event.");
+  
+          this.router.navigate(['/events']);
+        }
+      });
+     
+    } else {
+      this.router.navigate(['/login']);
+      this.toastService.presentToast('Você precisa estar logado para se desinscrever de um evento!');
+    }
+
+    // console.log("Volte mais tarde para se desinscrever desse evento!")
   }
 
   goToProfile(user_id: string) {
@@ -79,6 +119,7 @@ export class EventPage implements OnInit {
         next: (res: any) => {
           if (res['success']) {
             this.toastService.presentToast('Você se inscreveu nesse evento.');
+            window.location.reload();
           } else {
             this.toastService.presentToast('Não foi possível se inscrever nesse evento.');
           }
@@ -98,7 +139,7 @@ export class EventPage implements OnInit {
 
   ngOnInit() {}
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     this.route.params.subscribe(params => {
       this.eventId = params['id'];
       
@@ -120,10 +161,23 @@ export class EventPage implements OnInit {
                   }
 
                   let participants = this.event.participants;
-                  for (let i = 0; i < participants.length; i++) {
-                    if (participants[i].user_id == this.user.user_id) {
-                      this.is_subscribed = true;
-                      break;
+                  let checkinParticipants = this.event.checked_in_participants;
+                  console.log(checkinParticipants);
+                  // TODO : check logic to check participant checkin status
+                  for (let i = 0; i < checkinParticipants.length; i++) {
+                    for (let j = 0; j < participants.length; j++) {
+
+                      if(checkinParticipants[i].user_id == participants[j].user_id) {
+                        participants[j].checkin_status = true;
+                      }
+
+                    }
+                  }
+                  // ON TEST - MOCK
+                  for (let j = 0; j < participants.length; j++) {
+                    participants[j].checkin_status = false;
+                    if(j%2 != 0) {
+                      participants[j].checkin_status = true;
                     }
                   }
 

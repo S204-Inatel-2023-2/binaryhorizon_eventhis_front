@@ -21,7 +21,7 @@
           style="padding-left: 2%; padding-right: 2%; justify-content: end;">Inscrever</ion-button>
         </ng-container>
 
-        <ng-container *ngIf="is_subscribed===true">
+        <ng-container *ngIf="is_owner===false && is_subscribed===true">
           <ion-button color="primary" expand="full" (click)="unsubscribeFromEvent()" 
           style="padding-left: 2%; padding-right: 2%; justify-content: end;">Desinscrever</ion-button>
         </ng-container>
@@ -42,7 +42,14 @@
                 <img alt="Silhouette of a person's head" src="{{ participant.contact.photo }}" />
               </ion-avatar>
               <ion-label>{{ participant.contact.name }} </ion-label>
-              <ion-button shape="round" fill="outline" color="tertiary" (click)="doCheckin(participant.contact.photo, participant.contact.user_id)">Fazer check-in</ion-button>
+
+              <!-- TODO: Add logic to check participant checkin status -->
+              <ng-container *ngIf="participant.checkin_status===false">
+                <ion-button shape="round" fill="outline" color="tertiary" (click)="doCheckin(participant.contact.photo, participant.user_id)">Realizar check-in</ion-button>
+              </ng-container>
+              <ng-container *ngIf="participant.checkin_status===true">
+                <ion-button color="success" [disabled]="true" shape="round">Checkin realizado</ion-button>
+              </ng-container>              
         
             </ion-item>
           </ion-list>
