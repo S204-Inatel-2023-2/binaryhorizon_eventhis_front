@@ -56,6 +56,11 @@ export class AuthService {
     return this.httpService.post('events', postData);
   }
 
+  editEvent(event_id:any, postData: any): Observable<any> {
+    const url = 'events/' + event_id;
+    return this.httpService.put(url, postData);
+  }
+
   login(postData: any): Observable<any> {
     return this.httpService.post('login', postData);
   }
