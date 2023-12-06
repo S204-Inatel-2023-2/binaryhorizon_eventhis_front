@@ -69,13 +69,13 @@ export class EventsPage {
               }
             }
           } else {
-            this.toastService.presentToast('Could not find event.');
+            this.toastService.presentToast('Não foi possível encontrar eventos.');
 
             this.router.navigate(['/events']);
           }
         },
         error: (error: any) => {
-          this.toastService.presentToast("Could not find event.");
+          this.toastService.presentToast("Não foi possível encontrar eventos.");
 
           this.router.navigate(['/events']);
         }

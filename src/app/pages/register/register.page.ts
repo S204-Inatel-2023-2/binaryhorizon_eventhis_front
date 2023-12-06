@@ -21,14 +21,14 @@ export class RegisterPage implements OnInit {
     company: '',
     linkedin: '',
     phone: '',
-    photo: '', 
+    photo: '',
     is_staff: false
   };
 
-  imageSource:any;
-  imageStateMessage = "Foto não capturada";
+  imageSource: any;
+  imageStateMessage = "Foto não capturada";
 
-  changeStaff = (event:any) => {
+  changeStaff = (event: any) => {
 
     if (!this.postData.is_staff) {
       setTimeout(() => { this.postData.is_staff = true; });
@@ -48,12 +48,14 @@ export class RegisterPage implements OnInit {
     this.imageSource = image.dataUrl;
     this.postData.photo = this.imageSource;
     this.imageStateMessage = "Foto capturada";
+    this.toastService.presentToast('Foto capturada.');
   };
 
   discardPicture = async () => {
     this.imageSource = '';
     this.postData.photo = '';
-    this.imageStateMessage = "Foto não capturada";
+    this.imageStateMessage = "Foto não capturada";
+    this.toastService.presentToast('Foto descartada.');
   }
 
   constructor(
@@ -61,7 +63,7 @@ export class RegisterPage implements OnInit {
     private toastService: ToastService,
     private storageService: StorageService,
     private router: Router
-    ) {}
+  ) { }
 
   ngOnInit() {
   }
@@ -85,7 +87,7 @@ export class RegisterPage implements OnInit {
   register() {
     if (this.validateInputs()) {
 
-      //define filename
+      // define filename
       const seed = this.postData.email;
       const filename = SHA256(seed).toString();
 
@@ -93,45 +95,35 @@ export class RegisterPage implements OnInit {
         next: (res: any) => {
           if (res['url']) {
             this.postData.photo = res['url'];
-    
+
             this.authService.signup(this.postData).subscribe({
               next: (res: any) => {
                 if (res['user']) {
                   // If the response includes user data, it means the login was successful.
-        
+
                   // Stores the user data in a local storage system.
                   this.storageService.store(AuthConstants.AUTH, res['user']);
-        
+
                   // Then, redirects the user to the main page (route '/') of your application.
                   this.router.navigate(['/']);
                 } else {
-                  this.toastService.presentToast(
-                    'Data alreay exists, please enter new details.'
-                  );
+                  this.toastService.presentToast('Os dados já existem, por favor, insira novos detalhes.');
                 }
               },
               error: (error: any) => {
-                this.toastService.presentToast('Network Issue.');
+                this.toastService.presentToast('Problema de rede.');
               }
             });
-  
-  
           } else {
-            this.toastService.presentToast(
-              'Data alreay exists, please enter new details.'
-            );
+            this.toastService.presentToast('Erro ao fazer upload da imagem.');
           }
         },
         error: (error: any) => {
-          this.toastService.presentToast('Network Issue.');
+          this.toastService.presentToast('Problema de rede.');
         }
       });
-  
-    
     } else {
-      this.toastService.presentToast(
-        'Please enter Name, email, password and a photo.'
-      );
+      this.toastService.presentToast('Por favor, preencha todos os campos.');
     }
   }
 }

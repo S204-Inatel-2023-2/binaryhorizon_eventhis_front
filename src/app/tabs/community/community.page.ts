@@ -46,31 +46,29 @@ export class CommunityPage {
       console.error('Erro ao obter dados do usuário:', error);
     }
 
-    this.authService.getAllUsers().subscribe({
+    this.authService.getConnections(this.user['user_id']).subscribe({
       next: (res: any) => {
-        if (res['users']) {
-          let usersData = res['users'];
+        if (res['success']) {
+          let connections = res['connections'];
 
-          if(usersData) {
-            this.friends = usersData;
-            for (let i = 0; i < this.friends.length; i++) {
-              this.friends[i].contact.name = this.CapitalizeFirstLetter(this.friends[i].contact.name);
-
-              if(this.friends[i].contact.photo === "") {
-                this.friends[i].contact.photo = "https://placehold.co/100x100";
-              }
-              if(this.friends[i].user_id === this.user.user_id) {
-                this.friends.splice(i, 1);
-                i--; // Decrement i to account for the removed element
+          for (let i = 0; i < connections.length; i++) {
+            if(connections) {
+              this.friends = connections;
+              for (let i = 0; i < this.friends.length; i++) {
+                this.friends[i].contact.name = this.CapitalizeFirstLetter(this.friends[i].contact.name);
+  
+                if(this.friends[i].contact.photo === "") {
+                  this.friends[i].contact.photo = "https://placehold.co/100x100";
+                }
               }
             }
           }
         } else {
-          this.toastService.presentToast('Could not find friends.');
+          this.toastService.presentToast('Não foi possível encontrar amigos.');
         }
       },
       error: (error: any) => {
-        this.toastService.presentToast("Could not find friends.");
+        this.toastService.presentToast("Não foi possível encontrar amigos.");
       }
     });
   }

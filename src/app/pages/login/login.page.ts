@@ -58,18 +58,18 @@ export class LoginPage implements OnInit {
           } else {
             // If the response doesn't include user data, it indicates an authentication error.
             // Therefore, it displays an error message to the user.
-            this.toastService.presentToast('Incorrect username and password.');
+            this.toastService.presentToast('Username ou senha incorretos.');
           }
         },
         error: (error: any) => {
           // If an error occurs during the authentication call, this error function is called.
           // It displays a network error message to the user.
-          this.toastService.presentToast("Incorrect username and password.");
+          this.toastService.presentToast("Username ou senha incorretos.");
         }
       });
     } else {
       // If user inputs are not valid, it displays an error message to the user.
-      this.toastService.presentToast('Incorrect username and password.');
+      this.toastService.presentToast('Username ou senha incorretos.');
     }
   }  
 }
