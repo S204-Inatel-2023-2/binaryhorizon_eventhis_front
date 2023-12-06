@@ -16,7 +16,7 @@ export class EventPage implements OnInit {
   eventId!: string
   event: any
   user: any
-  is_owner: boolean = true
+  is_owner: boolean = false
   is_subscribed: boolean = false
 
   constructor(
