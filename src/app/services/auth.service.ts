@@ -17,6 +17,25 @@ export class AuthService {
     private router: Router
   ) {}
 
+  removeFriend(user_id:any, friend_id:any): Observable<any> {
+    const url = 'users/' + user_id + '/connections/' + friend_id;
+    return this.httpService.delete(url);
+  }
+
+  getConnections(user_id:any): Observable<any> {
+    const url = 'users/' + user_id + '/connections';
+    return this.httpService.get(url);
+  }
+
+  addFriend(user_id:any, friend_id:any): Observable<any> {  
+    const url = 'users/' + user_id + '/connections';
+    let data = {
+      connection_id: friend_id
+    }
+
+    return this.httpService.post(url, data);
+  }
+
   subscribeToEvent(event_id:any, participant_id:any): Observable<any> {
     const url = 'events/' + event_id + '/add-participant/' + participant_id;
     return this.httpService.post(url);

@@ -46,7 +46,7 @@ export class HttpService {
       return this.http.put(url, JSON.stringify(data), options);
     }
 
-    delete(serviceName: string, data: any) {
+    delete(serviceName: string, data: any = null) {
       const headers = new HttpHeaders({
         'Content-Type': 'application/json'
       });
