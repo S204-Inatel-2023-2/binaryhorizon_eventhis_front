@@ -2,7 +2,6 @@
   <app-header componentType="just-text">Comunidade</app-header>
 
   <ion-content class="ion-padding">
-
     <ion-item class="profile-card">
       <ion-avatar slot="start" class="profile-photo bigger-avatar">
         <ion-img [src]="user.contact.photo" alt="Foto do usuario" ></ion-img>
@@ -14,6 +13,11 @@
         <ion-note color="medium" class="ion-text-wrap" >{{ user.contact.email }}<br>{{ user.contact.phone }}</ion-note>
       </ion-label>
     </ion-item>
-    
+    <ng-container *ngIf="alreadyFriend">
+      <ion-button shape="round" fill="outline" color="danger" expand="full" (click)="removeFriend( user.user_id )">Remover amigo</ion-button>
+    </ng-container>
+    <ng-container *ngIf="!alreadyFriend">
+      <ion-button shape="round" fill="outline" color="tertiary" expand="full" (click)="addFriend( user.user_id )">Adicionar amigo</ion-button>
+    </ng-container>
   </ion-content>
 </ng-container>
