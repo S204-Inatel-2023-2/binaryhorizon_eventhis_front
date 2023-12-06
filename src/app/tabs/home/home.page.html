@@ -78,8 +78,8 @@
     <swiper-container 
       [modules]="swiperModules"
       [slidesPerView]="2.1"
-      [loop] = "false" *ngIf="friends">
-      <swiper-slide *ngFor="let user of friends">
+      [loop] = "false" *ngIf="youMustKnow">
+      <swiper-slide *ngFor="let user of youMustKnow">
         <ion-card class="custom-width">
           <img alt="{{ user.contact.name }}" src="{{ user.contact.photo }}" class="user-image" />
           <ion-card-header>

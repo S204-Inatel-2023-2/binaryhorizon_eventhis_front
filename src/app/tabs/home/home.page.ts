@@ -17,8 +17,9 @@ export class HomePage {
   events: any
   events1: any
   events2: any
-  friends: any
+  allUsers: any
   user: any
+  youMustKnow: any
 
   alreadyFriends: any
 
@@ -95,13 +96,7 @@ export class HomePage {
       this.authService.getConnections(this.user['user_id']).subscribe({
         next: (res: any) => {
           if (res['success']) {
-            let connections = res['connections'];
-
-            for (let i = 0; i < connections.length; i++) {
-              if(connections) {
-                this.alreadyFriends = connections;
-              }
-            }
+            this.alreadyFriends = res['connections'];
           } else {
             this.toastService.presentToast('Não foi possível encontrar amigos.');
           }
@@ -116,33 +111,29 @@ export class HomePage {
       next: (res: any) => {
         if (res['users']) {
           let usersData = res['users'];
-          
+          let excludeIds = [];
+          this.youMustKnow = [];
           if(usersData) {
-            this.friends = usersData;
+            this.allUsers = usersData;
             
-            for (let i = 0; i < this.friends.length; i++) {
-              let fullName = this.friends[i].contact.name;
+            for (let i = 0; i < this.alreadyFriends.length; i++) {
+              excludeIds.push(this.alreadyFriends[i].user_id);
+            }
+            excludeIds.push(this.user.user_id);
+
+            for (let i = 0; i < this.allUsers.length; i++) {
+              let fullName = this.allUsers[i].contact.name;
               let firstName = fullName.split(' ')[0];
               //pick only first name
-              this.friends[i].contact.name = firstName
+              this.allUsers[i].contact.name = firstName
 
-              if(this.friends[i].contact.photo === "") {
-                this.friends[i].contact.photo = "https://placehold.co/100x100";
+              if(this.allUsers[i].contact.photo === "") {
+                this.allUsers[i].contact.photo = "https://placehold.co/100x100";
               }
 
-              if(this.user){
-                if(this.friends[i].user_id === this.user.user_id) {
-                  this.friends.splice(i, 1);
-                  i--; // Decrement i to account for the removed element
-                }
-                else if(this.alreadyFriends){
-                  for (let j = 0; j < this.alreadyFriends.length; j++) {
-                    if(this.friends[i].user_id === this.alreadyFriends[j].user_id) {
-                      this.friends.splice(i, 1);
-                      i--; // Decrement i to account for the removed element
-                    }
-                  }
-                }
+              if(!this.user || !excludeIds.includes(this.allUsers[i].user_id)) 
+              {
+                this.youMustKnow.push(this.allUsers[i]);
               }
             }
           }
