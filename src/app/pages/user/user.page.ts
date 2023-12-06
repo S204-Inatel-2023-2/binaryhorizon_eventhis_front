@@ -27,21 +27,21 @@ export class UserPage implements OnInit {
   async removeFriend(friendId: any) {
     if (!this.loggedInUser) {
       this.router.navigate(['/login']);
-      this.toastService.presentToast('You must be logged in to remove friends.');
+      this.toastService.presentToast('Faça login para remover amigos.');
       return;
     }
     this.authService.removeFriend(this.loggedInUser['user_id'], friendId).subscribe({
       next: (res: any) => {
         console.log(res);
         if (res['success']) {
-          this.toastService.presentToast('Friend removed successfully!');
+          this.toastService.presentToast('Amizade removida com sucesso!');
           window.location.reload();
         } else {
-          this.toastService.presentToast('Could not remove friend.');
+          this.toastService.presentToast('Não foi possível remover a amizade.');
         }
       },
       error: (error: any) => {
-        this.toastService.presentToast("Could not remove friend.");
+        this.toastService.presentToast("Não foi possível remover a amizade.");
       }
     });
   }
@@ -49,21 +49,21 @@ export class UserPage implements OnInit {
   async addFriend(friendId: any) {
     if (!this.loggedInUser) {
       this.router.navigate(['/login']);
-      this.toastService.presentToast('You must be logged in to add friends.');
+      this.toastService.presentToast('Faça login para adicionar amigos.');
       return;
     }
     this.authService.addFriend(this.loggedInUser['user_id'], friendId).subscribe({
       next: (res: any) => {
         console.log(res);
         if (res['success']) {
-          this.toastService.presentToast('Friend added successfully!');
+          this.toastService.presentToast('Amigo adicionado com sucesso!');
           window.location.reload();
         } else {
-          this.toastService.presentToast('Could not add friend.');
+          this.toastService.presentToast('Não foi possível adicionar o amigo.');
         }
       },
       error: (error: any) => {
-        this.toastService.presentToast("Could not add friend.");
+        this.toastService.presentToast("Não foi possível adicionar o amigo.");
       }
     });
   }
@@ -88,11 +88,11 @@ export class UserPage implements OnInit {
                 }
               }
             } else {
-              this.toastService.presentToast('Could not find friends.');
+              this.toastService.presentToast('Não foi possível encontrar seus amigos.');
             }
           },
           error: (error: any) => {
-            this.toastService.presentToast("Could not find friends.");
+            this.toastService.presentToast("Não foi possível encontrar seus amigos.");
           }
         })
 
@@ -122,11 +122,11 @@ export class UserPage implements OnInit {
                   }
               }
             } else {
-              this.toastService.presentToast('Could not find friends.');
+              this.toastService.presentToast('Não foi possível encontrar seus amigos.');
             }
           },
           error: (error: any) => {
-            this.toastService.presentToast("Could not find friends.");
+            this.toastService.presentToast("Não foi possível encontrar seus amigos.");
           }
         });
       });

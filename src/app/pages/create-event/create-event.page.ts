@@ -104,12 +104,12 @@ export class CreateEventPage implements OnInit {
                 this.router.navigate([url]);
               } else {
                 this.toastService.presentToast(
-                  'Data alreay exists, please enter new details.'
+                  'Dados ja existem, por favor insira novos.'
                 );
               }
             },
             error: (error: any) => {
-              this.toastService.presentToast('Could not create event.');
+              this.toastService.presentToast('Não foi possivel criar o evento.');
             }
           });
 
@@ -117,12 +117,12 @@ export class CreateEventPage implements OnInit {
 
         } else {
           this.toastService.presentToast(
-            'Data alreay exists, please enter new details.'
+            'Dados ja existem, por favor insira novos.'
           );
         }
       },
       error: (error: any) => {
-        this.toastService.presentToast('Could not create event.');
+        this.toastService.presentToast('Não foi possivel criar o evento.');
       }
     });
 

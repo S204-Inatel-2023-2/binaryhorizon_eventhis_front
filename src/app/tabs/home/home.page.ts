@@ -66,13 +66,13 @@ export class HomePage {
           this.events2 = this.events.slice(Math.ceil(this.events.length / 2), this.events.length);
           
         } else {
-          this.toastService.presentToast('Could not find event.');
+          this.toastService.presentToast('Não foi possível encontrar o evento.');
 
           this.router.navigate(['/events']);
         }
       },
       error: (error: any) => {
-        this.toastService.presentToast("Could not find event.");
+        this.toastService.presentToast("Não foi possível encontrar o evento.");
 
         this.router.navigate(['/events']);
       }
@@ -118,11 +118,11 @@ export class HomePage {
 
           }
         } else {
-          this.toastService.presentToast('Could not find friends.');
+          this.toastService.presentToast('Não foi possível encontrar amigos.');
         }
       },
       error: (error: any) => {
-        this.toastService.presentToast("Could not find friends.");
+        this.toastService.presentToast("Não foi possível encontrar amigos.");
       }
     });
   }

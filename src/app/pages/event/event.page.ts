@@ -103,7 +103,7 @@ export class EventPage implements OnInit {
           }
         },
         error: (error: any) => {
-          this.toastService.presentToast("Could not find event.");
+          this.toastService.presentToast("Não foi possível se desinscrever.");
   
           this.router.navigate(['/events']);
         }
@@ -137,7 +137,7 @@ export class EventPage implements OnInit {
         }
       },
       error: (error: any) => {
-        this.toastService.presentToast("Could not find event.");
+        this.toastService.presentToast("Não foi possível editar o evento.");
   }});
   }
 
@@ -160,7 +160,7 @@ export class EventPage implements OnInit {
           }
         },
         error: (error: any) => {
-          this.toastService.presentToast("Could not find event.");
+          this.toastService.presentToast("Não foi possível encontrar o evento.");
   
           this.router.navigate(['/events']);
         }
@@ -247,13 +247,13 @@ export class EventPage implements OnInit {
             }
             
           } else {
-            this.toastService.presentToast('Could not find event.');
+            this.toastService.presentToast('Não foi possível encontrar o evento.');
 
             this.router.navigate(['/events']);
           }
         },
         error: (error: any) => {
-          this.toastService.presentToast("Could not find event.");
+          this.toastService.presentToast("Não foi possível encontrar o evento.");
 
           this.router.navigate(['/events']);
         }

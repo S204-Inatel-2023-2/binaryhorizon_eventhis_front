@@ -64,11 +64,11 @@ export class CommunityPage {
             }
           }
         } else {
-          this.toastService.presentToast('Could not find friends.');
+          this.toastService.presentToast('Não foi possível encontrar amigos.');
         }
       },
       error: (error: any) => {
-        this.toastService.presentToast("Could not find friends.");
+        this.toastService.presentToast("Não foi possível encontrar amigos.");
       }
     });
   }
