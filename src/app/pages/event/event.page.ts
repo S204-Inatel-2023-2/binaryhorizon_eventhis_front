@@ -10,11 +10,13 @@ import { IonModal } from '@ionic/angular';
   styleUrls: ['./event.page.scss'],
 })
 export class EventPage implements OnInit {
-  @ViewChild(IonModal) modal!: IonModal;
+  @ViewChild(IonModal)
+  modal!: IonModal;
+
   eventId!: string
   event: any
   user: any
-  is_owner: boolean = false
+  is_owner: boolean = true
   is_subscribed: boolean = false
 
   constructor(
@@ -40,6 +42,11 @@ export class EventPage implements OnInit {
     image_url: "",
     image: "",
   }  
+
+  isModalOpen = false;
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 
   doCheckin = async (image_url: string, user_id: string) => {
     this.postData.image_url = image_url
@@ -232,7 +239,7 @@ export class EventPage implements OnInit {
                       participants[j].checkin_status = true;
                     }
                   }
-
+                  
                 } else {
                   this.user = null;
                 }

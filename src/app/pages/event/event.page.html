@@ -27,8 +27,9 @@
         </ng-container>
 
         <ng-container *ngIf="is_owner===true">
+
           <ion-button color="primary" expand="full" id="open-modal"
-          style="padding-left: 2%; padding-right: 2%; justify-content: end;">Editar</ion-button>
+          style="padding-left: 2%; padding-right: 2%; justify-content: end;" (click)="setOpen(true)">Editar</ion-button>
 
           <div class="ion-padding">
             <div class="list-title">
@@ -54,63 +55,65 @@
               </ion-item>
             </ion-list>
           </div>
-
-          <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
-            <ng-template>
-              <ion-header>
-                <ion-toolbar>
-                  <ion-buttons slot="start">
-                    <ion-button (click)="cancel()">Cancel</ion-button>
-                  </ion-buttons>
-                  <ion-title>Editando {{ event.name }}</ion-title>
-                  <ion-buttons slot="end">
-                    <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
-                  </ion-buttons>
-                </ion-toolbar>
-              </ion-header>
-              <ion-content class="ion-padding">
-      
-      
-                    <ion-item>
-                      <ion-label position="floating" color="dark">Titulo</ion-label>
-                      <ion-input label="" autocomplete="off" type="text" [(ngModel)]="eventPostData.name" name="name"></ion-input>
-                    </ion-item>
-      
-                    <ion-item>
-                      <ion-label position="floating">Descrição</ion-label>
-                      <ion-input label="" autocomplete="off" type="text" [(ngModel)]="eventPostData.description" name="description"></ion-input>
-                    </ion-item>
-                    
-                    <ion-item>
-                      <ion-label>Data</ion-label>
-                      <ion-datetime
-                        name="date"
-                        id="datetime"
-                        mode="ios"
-                        locale="pt-BR"
-                        color="secondary"
-                        [(ngModel)]="eventPostData.date"
-                        [max]="2030-01-01"
-                      ></ion-datetime>
-                    </ion-item>
-      
-            
-                    <ion-item>
-                      <ion-label position="floating" color="dark">Limite de inscrições</ion-label>
-                      <ion-input label="" autocomplete="off" type="number" [(ngModel)]="eventPostData.max_capacity" name="max_capacity"></ion-input>
-                    </ion-item>
-            
-                    <ion-item>
-                      <ion-label position="floating" color="dark">Local</ion-label>
-                      <ion-input label="" autocomplete="off" type="text" [(ngModel)]="eventPostData.place" name="place"></ion-input>
-                    </ion-item>
-      
-      
-              </ion-content>
-            </ng-template>
-          </ion-modal>
-
         </ng-container>
+
+        <ion-modal [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-buttons slot="start">
+                  <ion-button (click)="cancel()">Cancel</ion-button>
+                </ion-buttons>
+                <ion-title>Editando {{ event.name }}</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+    
+    
+                  <ion-item>
+                    <ion-label position="floating" color="dark">Titulo</ion-label>
+                    <ion-input label="" autocomplete="off" type="text" [(ngModel)]="eventPostData.name" name="name"></ion-input>
+                  </ion-item>
+    
+                  <ion-item>
+                    <ion-label position="floating">Descrição</ion-label>
+                    <ion-input label="" autocomplete="off" type="text" [(ngModel)]="eventPostData.description" name="description"></ion-input>
+                  </ion-item>
+                  
+                  <ion-item>
+                    <ion-label>Data</ion-label>
+                    <ion-datetime
+                      name="date"
+                      id="datetime"
+                      mode="ios"
+                      locale="pt-BR"
+                      color="secondary"
+                      [(ngModel)]="eventPostData.date"
+                      [max]="2030-01-01"
+                    ></ion-datetime>
+                  </ion-item>
+    
+          
+                  <ion-item>
+                    <ion-label position="floating" color="dark">Limite de inscrições</ion-label>
+                    <ion-input label="" autocomplete="off" type="number" [(ngModel)]="eventPostData.max_capacity" name="max_capacity"></ion-input>
+                  </ion-item>
+          
+                  <ion-item>
+                    <ion-label position="floating" color="dark">Local</ion-label>
+                    <ion-input label="" autocomplete="off" type="text" [(ngModel)]="eventPostData.place" name="place"></ion-input>
+                  </ion-item>
+    
+    
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
 
     </ion-content>
     </ng-container>
+
+    

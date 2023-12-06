@@ -40,7 +40,7 @@
     </ion-item> -->
     <ion-item>
       <ion-label>Atualização cadastral</ion-label>
-      <ion-button fill="clear" color="medium" id="open-modal">
+      <ion-button fill="clear" color="medium" (click)="setOpen(true)">
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </ion-button>
 
@@ -69,7 +69,7 @@
 
 
 
-  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+  <ion-modal [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
         <ion-toolbar>

@@ -25,6 +25,10 @@ export class ProfilePage {
     is_staff: ''
   };
   isStaff: boolean = false;
+  isModalOpen = false;
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
   constructor(
     private authService: AuthService,
     private router: Router,
