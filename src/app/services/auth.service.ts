@@ -80,6 +80,11 @@ export class AuthService {
     return this.httpService.put(url, postData);
   }
 
+  editUser(user_id:any, postData: any): Observable<any> {
+    const url = 'users/' + user_id;
+    return this.httpService.put(url, postData);
+  }
+
   login(postData: any): Observable<any> {
     return this.httpService.post('login', postData);
   }
