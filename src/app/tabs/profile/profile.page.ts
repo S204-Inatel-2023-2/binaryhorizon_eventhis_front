@@ -68,9 +68,7 @@ export class ProfilePage {
   logout() {
     this.authService.logout();
   }
-  doSomething() {
-    console.log('Something');
-  }
+
   loginPostData = {
     email: '',
     password: ''
@@ -83,13 +81,11 @@ export class ProfilePage {
 
   confirm() {
     // mostrando postdata
-    console.log(this.postData);
 
     this.loginPostData.email = this.postData.email;
     this.loginPostData.password = this.postData.password;
 
     // validando login
-    console.log(this.loginPostData);
     this.authService.login(this.loginPostData).subscribe({
       next: (res: any) => {
         // When the response is successfully received, this function is called.
