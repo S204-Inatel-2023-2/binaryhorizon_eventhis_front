@@ -20,6 +20,8 @@ export class HomePage {
   friends: any
   user: any
 
+  alreadyFriends: any
+
   doRefresh(event: any) {
     setTimeout(() => {
       event.detail.complete();
@@ -37,7 +39,7 @@ export class HomePage {
   goToProfile(user_id: string) {
     this.router.navigate(['/community', user_id]);
   }
-  
+
   goToEventDetails(eventId: string) {
     this.router.navigate(['/events/' + eventId]);
   }
@@ -87,16 +89,37 @@ export class HomePage {
       console.error('Erro ao obter dados do usuário:', error);
     }
 
+    this.alreadyFriends = null;
+
+    if(this.user){
+      this.authService.getConnections(this.user['user_id']).subscribe({
+        next: (res: any) => {
+          if (res['success']) {
+            let connections = res['connections'];
+
+            for (let i = 0; i < connections.length; i++) {
+              if(connections) {
+                this.alreadyFriends = connections;
+              }
+            }
+          } else {
+            this.toastService.presentToast('Não foi possível encontrar amigos.');
+          }
+        },
+        error: (error: any) => {
+          this.toastService.presentToast("Não foi possível encontrar amigos.");
+        }
+      });
+    }
+
     this.authService.getAllUsers().subscribe({
       next: (res: any) => {
         if (res['users']) {
           let usersData = res['users'];
           
-          
           if(usersData) {
             this.friends = usersData;
             
-
             for (let i = 0; i < this.friends.length; i++) {
               let fullName = this.friends[i].contact.name;
               let firstName = fullName.split(' ')[0];
@@ -112,10 +135,16 @@ export class HomePage {
                   this.friends.splice(i, 1);
                   i--; // Decrement i to account for the removed element
                 }
+                else if(this.alreadyFriends){
+                  for (let j = 0; j < this.alreadyFriends.length; j++) {
+                    if(this.friends[i].user_id === this.alreadyFriends[j].user_id) {
+                      this.friends.splice(i, 1);
+                      i--; // Decrement i to account for the removed element
+                    }
+                  }
+                }
               }
-
             }
-
           }
         } else {
           this.toastService.presentToast('Não foi possível encontrar amigos.');
