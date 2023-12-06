@@ -19,9 +19,15 @@ const routes: Routes = [
     path: 'register',
     redirectTo: '/profile/register',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'user',
     loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule)
+  },
+  {
+    path: 'my-events',
+    redirectTo: '/events/my-events',
+    pathMatch: 'full'
   }
 
 ];
