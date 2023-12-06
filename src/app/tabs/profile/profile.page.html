@@ -23,12 +23,15 @@
       <ion-label>Email</ion-label>
       <ion-text color="medium" >{{ user.email }}</ion-text>
     </ion-item>
-    <ion-item>
-      <ion-label>Meus eventos</ion-label>
-      <ion-button fill="clear" color="medium" (click)="goToMyEvents()">
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
+    <ng-container *ngIf="isStaff===true">
+      <ion-item>
+        <ion-label>Meus eventos</ion-label>
+        <ion-button fill="clear" color="medium" (click)="goToMyEvents()">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ng-container>
+    
     <!-- <ion-item>
       <ion-label>Análises</ion-label>
       <ion-button fill="clear" color="medium" (click)="doSomething()">

@@ -19,6 +19,9 @@ export class EventsPage {
   events: any;
   user: any;
   isStaff: boolean = false;
+  results = [];
+  eventosFiltrados: any[] = [];
+  searchTerm: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -61,12 +64,15 @@ export class EventsPage {
             if(eventsData) {
               this.events = eventsData;
               this.ordenarEventosPorData();
-              
+              this.eventosFiltrados = this.events;
               for (let i = 0; i < this.events.length; i++) {
                 if(this.events[i].photo === "") {
                   this.events[i].photo = "https://placehold.co/600x400";
                 }
               }
+
+
+              
             }
           } else {
             this.toastService.presentToast('Não foi possível encontrar eventos.');
@@ -90,6 +96,22 @@ export class EventsPage {
 
       // Compare as datas
       return dateA.getTime() - dateB.getTime();
+    });
+  }
+  
+
+  filtrarEventos(event: any) {
+    const termo = event.target.value;
+    // Se o termo de pesquisa estiver vazio, mostre todos os eventos
+    if (!termo.trim()) {
+      this.eventosFiltrados = this.events;
+      return;
+    }
+
+    // Filtrar eventos com base no termo de pesquisa
+    this.eventosFiltrados = this.events.filter((evento: { name: string; }) => {
+      // Aqui você pode ajustar a lógica de filtragem conforme necessário
+      return evento.name.toLowerCase().includes(termo.toLowerCase());
     });
   }
 }

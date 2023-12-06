@@ -22,9 +22,9 @@ export class ProfilePage {
     linkedin: '',
     phone: '',
     photo: '', 
-    is_staff: false
+    is_staff: ''
   };
-
+  isStaff: boolean = false;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -39,8 +39,10 @@ export class ProfilePage {
     try {
       const userData = await this.route.snapshot.data['userData']['contact'];
       const user_id = await this.route.snapshot.data['userData']['user_id'];
+      const staf_data = await this.route.snapshot.data['userData']['is_staff'];
       if (userData) {
         this.user = userData;
+        this.isStaff = staf_data;
         this.user.name = this.capitalizeFirstLetter(this.user.name);
         this.user.user_id = user_id;
 
